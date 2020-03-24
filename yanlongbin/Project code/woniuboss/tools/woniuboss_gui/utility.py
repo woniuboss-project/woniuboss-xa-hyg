@@ -12,16 +12,13 @@
 # 该模块中主要的方法是：
 
 from selenium import webdriver
+import json
+
+import xlrd
 
 import xlrd
 # 将excel文件读取到内存中
 class Utility:
-
-    # 从某个路径读取文件内容
-    @classmethod
-    def get_txt(cls, path):
-        with open(path, encoding='utf8') as file:
-            return file.readlines()
 
     # 将包含换行的列表转化为不包含换行的列表
     @classmethod
@@ -32,6 +29,11 @@ class Utility:
             if not content.startswith('#'):
                 li.append(content.strip())
         return li
+
+    @classmethod
+    def get_txt(cls, path):
+        with open(path, encoding='utf8') as file:
+            return file.readlines()
 
     # 将文本读取的内容进行转化处理,由于测试数据的每一项有具体涵义，所以转化为[(),(),()]
     @classmethod
@@ -54,6 +56,8 @@ class Utility:
         with open(path) as file:
             contents = json.load(file)
         return contents
+
+
 
     # 传入两个值，判断这两个值是否相同.断言相等
     @classmethod
@@ -115,9 +119,8 @@ class Utility:
             # 不管更新操作是否成功，都会返回真或假的结果
             return flag
 
-    # 从excel中读取内容,读取结果为【(),(),()】
-    # 传递的参数是元组
-    # 该方法读取的是输入数据参数
+    # 从excel中读取内容,读取结果为【{},{},{}】
+    # 传递的参数是字典，包含的键是固定值
     @classmethod
     def get_excel_to_dict(cls, xls_file_info):
         # 将excel文件读取到内存中
@@ -130,22 +133,32 @@ class Utility:
         test_info = []
         # 按行读取每一条测试信息
         for i in range(xls_file_info['STARTROW'], xls_file_info['ENDROW']):
-            # 读取需要输入数据中的内容
+            # 读取单元格中的内容
             data = contents.cell(i, xls_file_info['DATACOL']).value
             # 读取期望结果列
             expect = contents.cell(i, xls_file_info['EXPECTCOL']).value
             # 获取的是列表
             temp = data.split('\n')
-            d = []
+            d = {}
             for t in temp:
-                # 给列表添加内容
-                d.append(t.split('=')[1])
-            d.append(expect)
-            # 将字典变成元组
-            new_d=tuple(d)
-            test_info.append(new_d)
+            # 给字典添加内容：dict[key] = value
+                d[t.split('=')[0]] = t.split('=')[1]
+            d['expect'] = expect
+            test_info.append(d)
+            # print(test_info)
         # 将结果返回
         return test_info
+    #从excel中读取内容,读取结果为【(),(),()】
+    @classmethod
+    def get_excel_to_tuple(cls,xls_file_info):
+        result=cls.get_excel_to_dict(xls_file_info)
+        # print(result)
+        li=[]
+        for i in result:
+            tup=tuple(i.values())
+            li.append(tup)
+        print(li)
+        return li
 
     # 从excel中读取内容,读取结果为【{},{},{}】
     # 传递的参数是字典，包含的键是固定值
@@ -172,8 +185,9 @@ class Utility:
                 # 给字典添加内容：dict[key] = value
                 d[t.split('=')[0]] = t.split('=')[1]
             test_info.append(d)
+        test_new_info = test_info[0]
         # 将结果返回
-        return test_info
+        return test_new_info
 
 
 

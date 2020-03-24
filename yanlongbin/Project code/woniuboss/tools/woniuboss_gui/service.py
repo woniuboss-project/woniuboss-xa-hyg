@@ -6,8 +6,11 @@
 # Date:         2020/2/11
 # -------------------------------------------------------------------------------
 # 对代码的重构（对代码及代码结构的优化）
-
-
+from woniuboss.tools.woniuboss_gui.utility import Utility
+from selenium import webdriver
+import json
+import unittest
+import xlrd
 class Service:
 
     # 点击查新 (使用xpath，text)
@@ -29,18 +32,6 @@ class Service:
         from selenium.webdriver.support.select import Select
         Select(driver.find_element_id_css(location)).select_by_visible_text(content)
 
-    # 判断页面上的某个元素是否存在
-    # 该方法依赖于webdriver库
-    @classmethod
-    def is_element_present(cls, driver, how, what):
-
-        from selenium.common.exceptions import NoSuchElementException
-        try:
-            driver.find_element(by=how, value=what)
-        except NoSuchElementException as e:
-            # 表示没找到
-            return False
-        return True
 
     # 向一个文本输入框执行三个固定操作：点击、清理、输入
     # 依赖于webdriver
@@ -67,11 +58,12 @@ class Service:
         driver.execute_script('document.getElementById("%s").readOnly=false' % (ele_id))
 
     # 具体的业务功能需要绕过登录，使用cookie
-    # 与应用强相关(woniuboss)，还依赖于webdriver
+    # 与应用强相关(woniusales)，还依赖于webdriver
     @classmethod
     def miss_login(cls, driver, base_config_path):
         cls.open_page(driver, base_config_path)
         # 通过字典方式传递cookie信息
+        # from guitest.woniusales_test02.tools.utility import Utility
         contents = base_config_path
         driver.add_cookie({'name': 'username', 'value': contents['username']})
         driver.add_cookie({'name': 'password', 'value': contents['password']})
@@ -98,15 +90,15 @@ class Service:
         ctime = time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime())
         png_path = '..\\bugpng\\error_%s.png' % (ctime)
         cls.get_png(driver, png_path)
+
     # 生成driver
     @classmethod
-    def get_driver(cls,base_config_path):
+    def get_driver(cls, base_config_path):
         contents = base_config_path
         from selenium import webdriver
         driver = getattr(webdriver, contents['BROWSER'])()
         driver.implicitly_wait(10)
         driver.maximize_window()
-        url='http://%s/%s'%(contents["HOSTNAME"],contents["AURL"])
+        url = 'http://%s:%s/%s' % (contents['HOSTNAME'], contents['PORT'], contents['AURL'])
         driver.get(url)
         return driver
-
