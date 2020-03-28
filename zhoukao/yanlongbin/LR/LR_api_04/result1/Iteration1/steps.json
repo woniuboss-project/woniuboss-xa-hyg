@@ -1,0 +1,8 @@
+[
+    {
+        "stepId": "STEP1",
+        "stepName": "Custom Request: web_custom_request",
+        "infFile": "t1.inf",
+        "time": 1585336610261
+    }
+]

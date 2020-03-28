@@ -1,0 +1,12 @@
+*** Settings ***
+Library           Selenium2Library
+
+*** Keywords ***
+单击安全退出
+    Click Element    xpath=/html/body/app-root/snail-header/div/div/span/a
+
+单击弹出框【确定】
+    Click Element    xpath=/html/body/div[3]/div/div/div[3]/div[2]
+
+判断退出是否成功
+    Run Keyword And continue On Failure    Should Not Be Empty    xpath=/html/body/div[3]/div/div/div[3]/div[1]

@@ -1,0 +1,16 @@
+*** Settings ***
+Library           RequestsLibrary
+
+*** Keywords ***
+cooker登录
+    [Arguments]    ${urlh}    ${cooker}
+    Create Session    session    ${urlh}    ${cooker}
+
+Post请求
+    [Arguments]    ${urld}    ${body}
+    Post Request    session    ${urld}    ${body}    Content-Type=application/x-www-from-urlencoded
+
+断言
+    [Arguments]    ${resp}    ${assertions}
+    log    ${resp} .text
+    should not contain    ${resp} .text    ${assertions}

@@ -1,0 +1,9 @@
+-+
+-DCCI
+-D_IDA_XL
+-DWINNT
+-ID:\Users\lenovo\Documents\VuGen\Scripts\LR_api_04
+-ID:\Program Files (x86)\HPE\LoadRunner\include
+-ed:\users\lenovo\documents\vugen\scripts\lr_api_04\\logfile.log
+d:\users\lenovo\documents\vugen\scripts\lr_api_04\\combined_LR_api_04.c
+d:\users\lenovo\documents\vugen\scripts\lr_api_04\\pre_cci.c

@@ -1,0 +1,47 @@
+Warning: Failed to post to 'http://127.0.0.1:8182/shunra/api/emulation/packetCaptureOnly', retcode=7.
+Warning: Failed to start NV emulation. Perhaps the NV server is not working, and therefore a NV report will not be generated.
+Virtual User Script started at: 2020/3/27 23:42:19
+Starting action vuser_init.
+Web Turbo Replay of LoadRunner 12.55.0 for Windows 10; build 911 (7ÔÂ 24 2017 19:46:00)  	[MsgId: MMSG-26983]
+Run mode: HTML  	[MsgId: MMSG-26993]
+Replay user agent: Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0)  	[MsgId: MMSG-26988]
+Run-Time Settings file: "D:\Users\lenovo\Documents\VuGen\Scripts\WebHttpHtml5\\default.cfg"  	[MsgId: MMSG-27141]
+Warning -27070: Replay statistic collection is not supported by the WinInet Replay and is ignored  	[MsgId: MWAR-27070]
+Warning -27071: "Use automatic configuration script" (in "Run-time settings/Internet Protocol/Proxy") is not supported by the WinInet Replay and is ignored  	[MsgId: MWAR-27071]
+Warning: Failed to get NV emulation handle.
+Ending action vuser_init.
+Running Vuser...
+Starting iteration 1.
+Maximum number of concurrent connections per server: 6  	[MsgId: MMSG-26989]
+Starting action Action.
+Warning: Failed to get NV emulation handle.
+Action.c(25): web_save_header started  	[MsgId: MMSG-26355]
+Action.c(25): web_save_header was successful  	[MsgId: MMSG-26392]
+Action.c(27): web_reg_save_param started  	[MsgId: MMSG-26355]
+Action.c(27): Registering web_reg_save_param was successful  	[MsgId: MMSG-26390]
+Action.c(29): web_submit_data("Sales_of_outbound") started  	[MsgId: MMSG-26355]
+Action.c(29): HTML parsing not performed for Content-Type "application/json" ("ParseHtmlContentType" Run-Time Setting is "TEXT"). URL="https://snailpet.com/v2/Shop/addSpending"  	[MsgId: MMSG-26548]
+Action.c(29): web_submit_data("Sales_of_outbound") was successful, 72 body bytes, 502 header bytes  	[MsgId: MMSG-26386]
+response=HTTP/1.1 200 OK
+Server: Tengine
+Content-Type: application/json; charset=utf-8
+Content-Length: 72
+Connection: keep-alive
+Date: Fri, 27 Mar 2020 15:42:19 GMT
+Server-Time: 1585323739
+Ali-Swift-Global-Savetime: 1585323739
+Via: cache18.l2cn1816[27,200-0,M], cache18.l2cn1816[29,0], kunlun6.cn257[96,200-0,M], kunlun6.cn257[99,0]
+X-Cache: MISS TCP_MISS dirn:-2:-2
+X-Swift-SaveTime: Fri, 27 Mar 2020 15:42:19 GMT
+X-Swift-CacheTime: 0
+Timing-Allow-Origin: *
+EagleId: de551ac615853237397985076e
+
+res={"error":1,"data":null,"code":6001,"message":"·þÎñ·±Ã¦ code:LT001"}
+Ending action Action.
+Ending iteration 1.
+Ending Vuser...
+Starting action vuser_end.
+Warning: Failed to get NV emulation handle.
+Ending action vuser_end.
+Vuser Terminated.

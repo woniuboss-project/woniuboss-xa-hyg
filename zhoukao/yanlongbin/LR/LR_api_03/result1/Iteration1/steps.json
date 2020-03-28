@@ -1,0 +1,8 @@
+[
+    {
+        "stepId": "STEP1",
+        "stepName": "Submit Data: Sales_of_outbound",
+        "infFile": "t1.inf",
+        "time": 1585335382768
+    }
+]

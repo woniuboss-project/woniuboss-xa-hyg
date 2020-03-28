@@ -1,0 +1,9 @@
+-+
+-DCCI
+-D_IDA_XL
+-DWINNT
+-IC:\Users\lenovo\Desktop\LR_api_03
+-ID:\Program Files (x86)\HPE\LoadRunner\include
+-ec:\users\lenovo\desktop\lr_api_03\\logfile.log
+c:\users\lenovo\desktop\lr_api_03\\combined_LR_api_03.c
+c:\users\lenovo\desktop\lr_api_03\\pre_cci.c

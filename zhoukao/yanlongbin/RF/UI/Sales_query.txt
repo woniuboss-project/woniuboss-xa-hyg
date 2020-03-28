@@ -1,0 +1,15 @@
+*** Settings ***
+Library           Selenium2Library
+
+*** Keywords ***
+单击查询销售
+    Click Element    xpath =/html/body/app-root/div/snail-menu-nav/div/a[5]/div[1]
+
+单击客户类型
+    Click Element    xpath =/html/body/app-root/div/snail-else-main/snail-sale/div[1]/div[2]/div/div[3]
+
+判断查询销售是否查询成功
+    Run Keyword And continue On Failure    Should Not Be Empty    xpath=/html/body/app-root/div/snail-else-main/snail-sale/div[1]/div[2]/table/tbody/tr[2]/td[1]/a
+
+选择会员
+    Click Element    xpath =/html/body/app-root/div/snail-else-main/snail-sale/div[4]/div/div/div[2]/div[2]

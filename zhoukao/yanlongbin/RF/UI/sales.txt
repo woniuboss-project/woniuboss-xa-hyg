@@ -1,0 +1,63 @@
+*** Settings ***
+Resource          login.txt
+Resource          log_out.txt
+Resource          querymember.txt
+Resource          Incoming_outgoing.txt
+Resource          Sales_query.txt
+
+*** Keywords ***
+登录动作
+    [Arguments]    ${uname}    ${password}
+    单击弹窗【确定】
+    输入用户名    ${uname}
+    输入密码    ${password}
+    点击登录
+    sleep    5
+    判断登录是否成功
+
+登出动作
+    [Arguments]    ${uname}    ${password}
+    单击弹窗【确定】
+    输入用户名    ${uname}
+    输入密码    ${password}
+    点击登录
+    sleep    5
+    单击安全退出
+    单击弹出框【确定】
+    sleep    5
+    判断退出是否成功
+
+查询会员动作
+    [Arguments]    ${uname}    ${password}    ${nuname}
+    单击弹窗【确定】
+    输入用户名    ${uname}
+    输入密码    ${password}
+    点击登录
+    sleep    5
+    单击会员
+    输入会员名称    ${nuname}
+    判断会员查询是否成功
+
+库存查询动作
+    [Arguments]    ${uname}    ${password}    ${nuname}
+    单击弹窗【确定】
+    输入用户名    ${uname}
+    输入密码    ${password}
+    点击登录
+    sleep    5
+    单击商品管理
+    输入商品名称    ${nuname}
+    判断出入库记录查询是否成功
+
+查询销售动作
+    [Arguments]    ${uname}    ${password}
+    单击弹窗【确定】
+    输入用户名    ${uname}
+    输入密码    ${password}
+    点击登录
+    sleep    5
+    单击查询销售
+    sleep    2
+    单击客户类型
+    选择会员
+    判断查询销售是否查询成功

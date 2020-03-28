@@ -1,0 +1,13 @@
+*** Settings ***
+Library           Selenium2Library
+
+*** Keywords ***
+单击会员
+    Click Element    xpath =/html/body/app-root/div/snail-menu-nav/div/a[2]/div[1]
+
+输入会员名称
+    [Arguments]    ${nuname}
+    Input Text    xpath=//*[@id="idMenbCrux"]    ${nuname}
+
+判断会员查询是否成功
+    Run Keyword And continue On Failure    Should Not Be Empty    xpath=/html/body/app-root/div/snail-member-main/snail-members/div[1]/div/div[2]/table/tbody/tr/td[2]/a/span

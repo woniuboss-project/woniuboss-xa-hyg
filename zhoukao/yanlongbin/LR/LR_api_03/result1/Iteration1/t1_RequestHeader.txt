@@ -1,0 +1,11 @@
+POST /v2/Members/add HTTP/1.1
+Cookie: CNZZDATA1260458171=490601326-1585324258-https%3A%2F%2Fsnailpet.com%2F|1585324258; isHighUser=1; printNum=0; snailLoginPhone=15093267272; snailNowUserId=27360; snailPowers=1; snailPrint=; snailServerTimeC=0; snailShopId=17543; snailStoreNum=29408; snailToken=636ada1ebd3b359d6939e44e1f57bbfc; UM_distinctid=1711ae0a5e120-0ab15bba782df7-4c312c7c-144000-1711ae0a5e2295; version=3.7
+Content-Type: application/x-www-form-urlencoded
+Cache-Control: no-cache
+User-Agent: Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0)
+Accept-Encoding: gzip, deflate
+Accept: */*
+Host: snailpet.com
+Content-Length: 170
+Connection: Keep-Alive
+
