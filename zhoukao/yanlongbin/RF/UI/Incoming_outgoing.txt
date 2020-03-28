@@ -1,0 +1,13 @@
+*** Settings ***
+Library           Selenium2Library
+
+*** Keywords ***
+单击商品管理
+    Click Element    xpath =/html/body/app-root/div/snail-menu-nav/div/a[3]/div[1]
+
+输入商品名称
+    [Arguments]    ${nuname}
+    Input Text    xpath=//*[@id="idInputCrux"]    ${nuname}
+
+判断出入库记录查询是否成功
+    Run Keyword And continue On Failure    Should Not Be Empty    xpath=/html/body/app-root/div/ng-component/div/div/snail-product-stock/div[2]/table/tbody/tr[1]/td[1]

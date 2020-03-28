@@ -1,0 +1,34 @@
+*** Settings ***
+Resource          common.txt
+Resource          sales.txt
+
+*** Keywords ***
+登录流程
+    [Arguments]    ${uname}    ${password}
+    打开浏览器    https://snailpet.com/index    Firefox
+    登录动作    ${uname}    ${password}
+    关闭浏览器
+
+登出流程
+    [Arguments]    ${uname}    ${password}
+    打开浏览器    https://snailpet.com/index    Firefox
+    登出动作    ${uname}    ${password}
+    关闭浏览器
+
+查询会员流程
+    [Arguments]    ${uname}    ${password}    ${nuname}
+    打开浏览器    https://snailpet.com/index    Firefox
+    查询会员动作    ${uname}    ${password}    ${nuname}
+    关闭浏览器
+
+库存查询流程
+    [Arguments]    ${uname}    ${password}    ${nuname}
+    打开浏览器    https://snailpet.com/index    Firefox
+    库存查询动作    ${uname}    ${password}    ${nuname}
+    关闭浏览器
+
+查询销售流程
+    [Arguments]    ${uname}    ${password}
+    打开浏览器    https://snailpet.com/index    Firefox
+    查询销售动作    ${uname}    ${password}
+    关闭浏览器

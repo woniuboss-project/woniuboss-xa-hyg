@@ -1,0 +1,49 @@
+*** Settings ***
+Resource          combination.txt
+Library           RequestsLibrary
+
+*** Keywords ***
+新建会员
+    [Arguments]    ${name}    ${phone}    ${assertions}
+    ${body}    Create Dictionary    addr=    cardNumber=    is_open_upgrade=1    is_spending_msg=1    mark=
+    ...    member_tags=    name=${name}    pets=[]    phone=${phone}    sex=    shop_id=17543
+    ...    shopId=17543    spare_phone=
+    ${cookies}    Create Dictionary    CNZZDATA1260458171=490601326-1585324258-https%3A%2F%2Fsnailpet.com%2F\|1585324258    isHighUser=1    printNum=0    snailLoginPhone=15093267272    snailNowUserId=27360
+    ...    snailPowers=1    snailPrint=    snailServerTimeC=0    snailShopId=17543    snailStoreNum=29408    snailToken=636ada1ebd3b359d6939e44e1f57bbfc
+    ...    UM_distinctid=1711ae0a5e120-0ab15bba782df7-4c312c7c-144000-1711ae0a5e2295    version=3.7
+    cooker登录    https://snailpet.com    ${cookies}
+    ${resp}    Post请求    /v2/Members/add    ${body}
+    断言    ${resp}    ${assertions}
+
+新建会员卡
+    [Arguments]    ${background}    ${discount}    ${discount_for_combination}    ${discountForService}    ${minPrice}    ${name}
+    ...    ${shop_id}    ${shopId}    ${assertions}
+    ${body}    Create Dictionary    background=${background}    discount=${discount}    discount_for_combination=${discount_for_combination}    discountForService=${discountForService}    enablePlus=1
+    ...    minPrice=${minPrice}    name=${name}    shop_id=${shop_id}    shopId=${shopId}
+    ${cookies}    Create Dictionary    CNZZDATA1260458171=490601326-1585324258-https%3A%2F%2Fsnailpet.com%2F\|1585324258    isHighUser=1    printNum=0    snailLoginPhone=15093267272    snailNowUserId=27360
+    ...    snailPowers=1    snailPrint=    snailServerTimeC=0    snailShopId=17543    snailStoreNum=29408    snailToken=636ada1ebd3b359d6939e44e1f57bbfc
+    ...    UM_distinctid=1711ae0a5e120-0ab15bba782df7-4c312c7c-144000-1711ae0a5e2295    version=3.7
+    cooker登录    https://snailpet.com    ${cookies}
+    ${resp}    Post请求    v2/Shop/setMemberLevel    ${body}
+    断言    ${resp}    ${assertions}
+
+新建记一笔
+    [Arguments]    ${actionTime}    ${type}    ${amount}    ${shopId}    ${shop_id}    ${assertions}
+    ${body}    Create Dictionary    actionTime=${actionTime}    type=${type}    mark=    amount=${amount}    shopId=${shopId}
+    ...    shop_id=${shop_id}
+    ${cookies}    Create Dictionary    CNZZDATA1260458171=490601326-1585324258-https%3A%2F%2Fsnailpet.com%2F\|1585324258    isHighUser=1    printNum=0    snailLoginPhone=15093267272    snailNowUserId=27360
+    ...    snailPowers=1    snailPrint=    snailServerTimeC=0    snailShopId=17543    snailStoreNum=29408    snailToken=636ada1ebd3b359d6939e44e1f57bbfc
+    ...    UM_distinctid=1711ae0a5e120-0ab15bba782df7-4c312c7c-144000-1711ae0a5e2295    version=3.7
+    cooker登录    https://snailpet.com    ${cookies}
+    ${resp}    Post请求    /v2/Shop/addSpending    ${body}
+    断言    ${resp}    ${assertions}
+
+新建购物卡
+    [Arguments]    ${exp_time_type}    ${integral_percentage}    ${name}    ${shop_id}    ${shopId}    ${assertions}
+    ${body}    Create Dictionary    exp_time_type=${exp_time_type}    integral_percentage=${integral_percentage}    name=${name}    shop_id=${shop_id}    shopId=${shopId}
+    ${cookies}    Create Dictionary    CNZZDATA1260458171=490601326-1585324258-https%3A%2F%2Fsnailpet.com%2F\|1585324258    isHighUser=1    printNum=0    snailLoginPhone=15093267272    snailNowUserId=27360
+    ...    snailPowers=1    snailPrint=    snailServerTimeC=0    snailShopId=17543    snailStoreNum=29408    snailToken=636ada1ebd3b359d6939e44e1f57bbfc
+    ...    UM_distinctid=1711ae0a5e120-0ab15bba782df7-4c312c7c-144000-1711ae0a5e2295    version=3.7
+    cooker登录    https://snailpet.com    ${cookies}
+    ${resp}    Post请求    /v2/shopping_card/save    ${body}
+    断言    ${resp}    ${assertions}

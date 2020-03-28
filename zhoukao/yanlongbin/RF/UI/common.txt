@@ -1,0 +1,11 @@
+*** Settings ***
+Library           Selenium2Library
+
+*** Keywords ***
+打开浏览器
+    [Arguments]    ${url}    ${browser}
+    OPen Browser    ${url}    ${browser}
+    Maximize Browser Window
+
+关闭浏览器
+    Close Browser
