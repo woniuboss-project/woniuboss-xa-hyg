@@ -1,0 +1,164 @@
+login
+    登录流程    18392075713    y123456
+    登录流程    18392075712    y123456
+    登录流程    18392075713    y12345
+
+add_customer
+    添加会员流程    杨涵    18855525525    点点
+    添加会员流程    刘鑫    15785852525    台台
+    添加会员流程    lucy    15785852525    布布
+
+query_customer
+    查询会员流程    judy
+    查询会员流程    小花
+
+delete_customer
+    删除会员流程    18855525525
+    删除会员流程    18888888888
+
+bookkeeping
+    记一笔流程    300    2020-03-15
+    记一笔流程    800    2020-03-17
+
+
+*** Keywords ***
+添加会员流程
+    [Arguments]    ${name}    ${cus_phone}    ${pet_name}
+    打开浏览器
+    输入用户名    18392075713
+    输入密码    y123456
+    点击登录
+    Sleep    10s
+    添加会员    ${name}    ${cus_phone}    ${pet_name}
+    关闭浏览器
+
+*** Keywords ***
+等待登录成功页面显示
+    Wait Until Element Is Visible    id=shop_name
+
+检查信息的正确性
+    Element Should Contain    id=shop_name    wnxd_yl
+    ${name}    Get Text    id=shop_name
+*** Keywords ***
+打开浏览器
+    Open Browser    https://snailpet.com/index
+    Sleep    3
+    Click Element    xpath=/html/body/div[3]/div/div/div[3]/div[1]
+
+关闭浏览器
+    Close Browser
+
+*** Keywords ***
+添加会员
+    [Arguments]    ${name}    ${cus_phone}    ${pet_name}
+    Click Element    css:a.menu_item:nth-child(3)
+    Sleep    5s
+    Click Element    xpath=/html/body/app-root/div/snail-member-main/snail-members/div[1]/div/div[1]/div[7]/a[1]
+    Input Text    xpath=/html/body/app-root/div/snail-member-main/snail-members/div[2]/div/div/div[2]/div/div[1]/div[1]/div[1]/div/div/input    ${name}
+    Input Text    xpath=/html/body/app-root/div/snail-member-main/snail-members/div[2]/div/div/div[2]/div/div[1]/div[1]/div[2]/div/div/input    ${cus_phone}
+    Sleep    3
+    Input Text    xpath=/html/body/app-root/div/snail-member-main/snail-members/div[2]/div/div/div[2]/div/div[2]/ul/li/div[1]/div[1]/div/div/input    ${pet_name}
+    Click Element    xpath=/html/body/app-root/div/snail-member-main/snail-members/div[2]/div/div/div[3]/div[2]
+    Sleep    3
+    ${text}    Get Text    xpath:html/body/app-root/div/snail-member-main/snail-members/div[1]/div/div[2]/table/tbody/tr[1]/td[2]/a/span
+    Run Keyword If    '${text}'=='${name}'    Log    test add customer pass
+    ...    ELSE    Log    test add customer fail
+
+*** Keywords ***
+删除会员
+    [Arguments]    ${cus_phone}
+    Click Element    css:a.menu_item:nth-child(3)
+    Sleep    5
+    Input Text    id=idMenbCrux    ${cus_phone}
+    Sleep    5
+    ${name}    Get Text    xpath=/html/body/app-root/div/snail-member-main/snail-members/div[1]/div/div[2]/table/tbody/tr/td[2]/a/span
+    Click Element    xpath=/html/body/app-root/div/snail-member-main/snail-members/div[1]/div/div[2]/table/tbody/tr/td[10]/a[4]
+    Click Element    xpath=/html/body/div[5]/div[3]/a[1]
+    Sleep    5
+    Element Should Not Be Visible    xpath=/html/body/app-root/div/snail-member-main/snail-members/div[1]/div/div[2]/table/tbody/tr/td[2]/a/span
+
+
+*** Keywords ***
+删除会员流程
+    [Arguments]    ${cus_phone}
+    打开浏览器
+    输入用户名    18392075713
+    输入密码    y123456
+    点击登录
+    Sleep    10s
+    删除会员    ${cus_phone}
+    关闭浏览器
+
+*** Keywords ***
+输入用户名
+    [Arguments]    ${phone}
+    Input Text    Xpath=/html/body/app-root/div/snail-index/div/div/div/div[3]/div/div[1]/input[1]    ${phone}
+
+输入密码
+    [Arguments]    ${password}
+    Input Password    Xpath=/html/body/app-root/div/snail-index/div/div/div/div[3]/div/div[1]/input[2]    ${password}
+
+点击登录
+    Click Element    Xpath=/html/body/app-root/div/snail-index/div/div/div/div[3]/div/div[1]/a
+
+*** Keywords ***
+登录流程
+    [Arguments]    ${phone}    ${password}
+    打开浏览器
+    输入用户名    ${phone}
+    输入密码    ${password}
+    点击登录
+    Sleep    5
+    Run Keyword And Continue On Failure    等待登录成功页面显示
+    Run Keyword And Continue On Failure    检查信息的正确性
+    关闭浏览器
+
+
+*** Keywords ***
+记一笔
+    [Arguments]    ${cash}    ${date}
+    Click Element    css:a.menu_item:nth-child(7)
+    Sleep    5
+    Click Element    xpath=/html/body/app-root/div/snail-else-main/snail-expend/div[1]/div[2]/div/a
+    Sleep    3
+    Click Element    xpath=/html/body/app-root/div/snail-else-main/snail-expend/div[2]/div/div/div[2]/div/div[2]/ul/li[7]
+    Input Text    xpath=/html/body/app-root/div/snail-else-main/snail-expend/div[2]/div/div/div[2]/div/div[3]/div[1]/div/div/input    ${cash}
+    Input Text    id-exp-date    ${date}
+    Click Element    xpath=/html/body/app-root/div/snail-else-main/snail-expend/div[2]/div/div/div[3]/div[2]
+    Sleep    5
+    Element Should Be Visible    css:.wn-table > tbody:nth-child(2) > tr:nth-child(4) > td:nth-child(2)    #Run Keyword If    '${money}==${cash}'    Log    test bookkeeping pass    #...
+    ...    # ELSE    Log    test bookkeeping fail
+
+*** Keywords ***
+记一笔流程
+    [Arguments]    ${cash}    ${date}
+    打开浏览器
+    输入用户名    18392075713
+    输入密码    y123456
+    点击登录
+    Sleep    5s
+    记一笔    ${cash}    ${date}
+    关闭浏览器
+
+*** Keywords ***
+查询会员
+    [Arguments]    ${cus_name}
+    Click Element    css:a.menu_item:nth-child(3)
+    Sleep    5
+    Input Text    id=idMenbCrux    ${cus_name}
+    Sleep    5
+    ${name}    Get Text    xpath=/html/body/app-root/div/snail-member-main/snail-members/div[1]/div/div[2]/table/tbody/tr/td[2]/a/span
+    Run Keyword If    '${name}'=='${cus_name}'    Log    test query cus pass
+    ...    ELSE    Log    test query cus fail
+
+
+*** Keywords ***
+查询会员流程
+    [Arguments]    ${cus_name}
+    打开浏览器
+    输入用户名    18392075713
+    输入密码    y123456
+    点击登录
+    Sleep    10s
+    查询会员    ${cus_name}
+    关闭浏览器
