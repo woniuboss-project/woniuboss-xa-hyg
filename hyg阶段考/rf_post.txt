@@ -1,0 +1,43 @@
+*** Settings ***
+Library           Selenium2Library
+Library           RequestsLibrary
+
+*** Keywords **
+login
+    [Arguments]    ${phone}    ${password}
+    Create Session    session    https://snailpet.com/v2/Passport/login
+    ${login_data}    Create Dictionary    phone=${phone}    password=${password}    shop_id=17538
+    ${headers}    Create Dictionary    Content-Type=application/json
+    ${resp}    Post Request    session    /v2/Passport/login    ${login_data}    headers=${headers}
+    #Log    ${resp.text}
+    Run Keyword If    ${resp.status_code}==200    log    test ok
+    ...    ELSE    log    test fail
+
+add_comm
+[Arguments]    ${product_id}
+    Create Session    session    https://snailpet.com/v2//Product/add
+    ${del_pro_data}    Create Dictionary    shopId=17538   product_ids=${product_id}    shop_id = 17556
+    ${headers}    Create Dictionary    Content-Type=application/json
+    ${resp}    Post Request    session    /v2/Product/delByIds    ${del_pro_data}    headers=${headers}
+    Run Keyword If    ${resp.status_code}==200    log    add_pass
+    ...    ELSE    log    add_fail
+
+updata_comm
+    [Arguments]    ${product_id}
+    Create Session    session    https://snailpet.com/v2//Product/update
+    ${del_pro_data}    Create Dictionary    shopId=17538   product_ids=${product_id}    shop_id = 17556
+    ${headers}    Create Dictionary    Content-Type=application/json
+    ${resp}    Post Request    session    /v2/Product/delByIds    ${del_pro_data}    headers=${headers}
+    Run Keyword If    ${resp.status_code}==200    log    updata_pass
+    ...    ELSE    log    updata_fail
+
+add_mem
+    [Arguments]    ${background}    ${discount}    ${combination}    ${Service}    ${enablePlus}    ${minPrice}
+    ...    ${name}    ${shopId}
+    Create Session    session     https://snailpet.com/v2/Members/add
+    ${VIP_data}    Create Dictionary    background=${background}    discount=${discount}    discount_for_combination=${combination}    discountForService=${service}    enablePlus=${enablePlus}
+    ...    minPrice=${minPrice}    name=${name}    shop_id=${shopId}    shopId=${shopId}
+    ${headers}    Create Dictionary    Content-Type=application/json
+    ${resp}    Post Request    session    v2/Shop/setMemberLevel    ${VIP_data}    headers=${headers}
+    Run Keyword If    ${resp.status_code}==200    log   add_pass
+    ...    ELSE    log    add_fail
