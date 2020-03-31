@@ -1,0 +1,104 @@
+*** Settings ***
+Library           RequestsLibrary
+
+*** Variables ***
+&{headers}        Content-Type=application/json
+
+*** Keywords ***
+创建session
+    [Arguments]    ${phone}    ${password}    ${login_path}
+    ${login_data}    Create Dictionary    phone=${phone}    password=${password}    shop_id=null
+    Create Session    session    https://snailpet.com
+    ${login_resp}    Post Request    session    ${login_path}    ${login_data}    headers=${headers}
+    [Return]    ${login_resp}
+
+
+
+*** Settings ***
+Resource          session.txt
+Library           RequestsLibrary
+
+*** Variables ***
+&{headers}        Content-Type=application/json
+
+*** Keywords ***
+登录
+    [Arguments]    ${phone}    ${password}    ${login_path}
+    ${login_resp}    创建session    ${phone}    ${password}    ${login_path}
+    log    ${login_resp.json()}
+    Run Keyword If    ${login_resp.json()}[error]==0    Log    login test pass
+    ...    ELSE    Run Keyword    Log    login test fail
+    [Return]    ${login_resp}
+
+记一笔
+    [Arguments]    ${amount}    ${shop_cost_path}
+    创建session    18392075713    y123456    /v2/Passport/login
+    ${shop_cost_datds}    Create Dictionary    actionTime=1583942400    type=1    mark=    amount=${amount}    shopId=17548
+    ...    shop_id=17548
+    ${shop_cost_resp}    Post Request    session    ${shop_cost_path}    ${shop_cost_datds}    headers=${headers}
+    Run Keyword If    ${shop_cost_resp.json()}[error]==0    Log    shop cost test pass
+    ...    ELSE    Run Keyword    Log    shop cost test fail
+
+删除记一笔
+    [Arguments]    ${spendingid}    ${shop_delete_path}
+    创建session    18392075713    y123456    /v2/Passport/login
+    ${shop_delete_datds}    Create Dictionary    shopId=17548    spendingid=${spendingid}    shop_id=17548
+    ${shop_delete_resp}    Post Request    session    ${shop_delete_path}    ${shop_delete_datds}    headers=${headers}
+    Run Keyword If    ${shop_delete_resp.json()}[error]==0    Log    shop delete test pass
+    ...    ELSE    Run Keyword    Log    shop delete test fail
+
+商品入库
+    [Arguments]    ${number}    ${storage_url}
+    创建session    18392075713    y123456    /v2/Passport/login
+    ${storage_datas}    Create Dictionary    productId=2133999    shopId=17548    number=${number}    mark=    inPrice=20
+    ...    shelf_life=0    production_time= null    exp_time= null    shop_id=17548
+    ${storage_resp}    Post Request    session    ${storage_url}    ${storage_datas}    headers=${headers}
+    Run Keyword If    ${storage_resp.json()}[error]==0    Log    storage test pass
+
+
+
+*** Settings ***
+Resource          dothing.txt
+
+*** Keywords ***
+登录流程
+    [Arguments]    ${phone}    ${password}    ${login_path}
+    登录    ${phone}    ${password}    ${login_path}
+
+记一笔流程
+    [Arguments]    ${amount}    ${shop_cost_path}
+    记一笔    ${amount}    ${shop_cost_path}
+
+删除记一笔流程
+    [Arguments]    ${spendingid}    ${shop_delete_path}
+    删除记一笔    ${spendingid}    ${shop_delete_path}
+
+商品入库流程
+    [Arguments]    ${number}    ${storage_url}
+    商品入库    ${number}    ${storage_url}
+
+
+
+
+*** Settings ***
+Resource          flow.txt
+
+*** Test Cases ***
+login_test
+    登录流程    18392075713    y123456    /v2/Passport/login
+    登录流程    18392075712    y123456    /v2/Passport/login
+    登录流程    18392075713    y12345    /v2/Passport/login
+
+shop_cost_test
+    记一笔流程    500    v2/Shop/addSpending
+    记一笔流程    -200    v2/Shop/addSpending
+    记一笔流程    abcd    v2/Shop/addSpending
+
+delete_shop_test
+    删除记一笔流程    283037    v2/Shop/delSpending
+    删除记一笔流程    283038    v2/Shop/delSpending
+    删除记一笔流程    abcd    v2/Shop/delSpending
+
+goods_storage_test
+    商品入库流程    50    v2/product/update/stocks
+    商品入库流程    asbf    v2/product/update/stocks

@@ -1,0 +1,281 @@
+woniuxiaodian()
+{
+	//定义一个检查的方法
+	web_reg_find("SaveCount=homepage_checkpoint",
+		"Text=专属宠物店的营销小助手",
+		LAST);
+	
+	lr_think_time(2);
+	lr_start_transaction("woniuxiaodian_login");
+	
+	
+	//定义一个get请求
+	web_url("open_homepage",
+		"URL=https://snailpet.com/index",
+		"TargetFrame=",
+		"Resource=0",
+		"Referer=",
+		LAST);
+	if (atoi(lr_eval_string("{homepage_checkpoint}")) == 1){
+		lr_output_message("test open homepage success");
+	}else{
+		lr_output_message("test open homepage fail");
+	}
+	
+	//定义一个检查登录的方法
+
+	web_reg_find("SaveCount=login_checkpoint",
+		"Text=欢迎您使用蜗牛小店",
+		LAST);
+	//定义一个post请求
+	web_submit_data("login",
+		"Action=https://snailpet.com/v2/Passport/login",
+		"Method=POST",
+		"EncType=",
+		"TargetFrame=",
+		"Referer=",
+		ITEMDATA,
+		"Name=password", "Value=18729170412", ENDITEM,
+		"Name=phone", "Value=18729170412", ENDITEM,
+		"Name=shop_id", "Value=", ENDITEM,
+		LAST);
+	
+	if (atoi(lr_eval_string("{login_checkpoint}")) == 1){
+		lr_end_transaction("woniuxiaodian_login",LR_PASS);
+	}else{
+		lr_end_transaction("woniuxiaodian_login",LR_FAIL);
+	}
+	
+	//设置
+	//定义设置界面一个检查点
+	web_reg_find("SaveCount=set_checkpoint",
+		"Text=setShopLogo",
+		LAST);
+	lr_think_time(2);
+	//定义一个事务
+	lr_start_transaction("woniuxiaodian_set");
+	
+	//定义一个认证的检查点
+	web_reg_find("SaveCount=authentication_checkpoint",	
+		"Text=认证店铺",
+		LAST);
+
+	// 发送设置-店铺认证post请求
+	web_submit_data("web_submit_data",
+		"Action=https://snailpet.com/v2/Shop/Certification/apply",
+		"Method=POST",
+		"EncType=",
+		"TargetFrame=",
+		"Referer=",
+		ITEMDATA,
+		"Name=shopId", "Value=17538", ENDITEM,
+		"Name=name", "Value=兔八哥的春天", ENDITEM,
+		"Name=phone", "Value=18729170412", ENDITEM,
+		"Name=address", "Value=陕西西安", ENDITEM,
+		"Name=weixin", "Value=18729170412", ENDITEM,
+		"Name=signs_image", "Value=https://file.snailpet.cn/64/24/642488932dd90fd6721b5498722bf008.jpg", ENDITEM,
+		"Name=shop_id", "Value=17538", ENDITEM,
+		LAST);
+		if (atoi(lr_eval_string("{authentication_checkpoint}")) == 1){
+		lr_end_transaction("woniuxiaodian_set",LR_PASS);
+	}else{
+		lr_end_transaction("woniuxiaodian_set",LR_FAIL);
+	}
+	
+	
+	
+	//定义一个会员界面的检查方法
+	web_reg_find("SaveCount=member_checkpoint",
+		"Text=会员姓名",
+		LAST);
+ 	lr_think_time(2);
+	//定义一个事务
+	lr_start_transaction("woniuxiaodian_member");
+	//定义一个新增会员的检查方法
+	web_reg_find("SaveCount=add_checkpoint",
+		"Text=add",
+		LAST);
+	//发送一个post请求
+	web_submit_data("web_submit_data",
+		"Action=https://snailpet.com/v2/Members/add",
+		"Method=POST",
+		"EncType=",
+		"TargetFrame=",
+		"Referer=",
+		ITEMDATA,
+		"Name=addr	", "Value=", ENDITEM,
+		"Name=cardNumber", "Value=0123456789", ENDITEM,
+		"Name=is_open_upgrade", "Value=1", ENDITEM,
+		"Name=is_spending_msg", "Value=1", ENDITEM,
+		"Name=mark", "Value=无", ENDITEM,
+		"Name=member_tags", "Value=44046", ENDITEM,
+		"Name=name", "Value=隔壁小侯", ENDITEM,
+		"Name=birthday", "Value=1577808000", ENDITEM,
+		"Name=color", "Value=黑色", ENDITEM,
+		"Name=is_birthday_notic", "Value=1", ENDITEM,
+		"Name=is_sterilization", "Value=0", ENDITEM,
+		"Name=mark", "Value=无", ENDITEM,
+		"Name=name", "Value=豆豆", ENDITEM,
+		"Name=sex", "Value=1", ENDITEM,
+		"Name=speciesId", "Value=15", ENDITEM,
+		"Name=weight_new", "Value=", ENDITEM,
+		"Name=phone", "Value=18729170000", ENDITEM,
+		"Name=sex", "Value=1", ENDITEM,
+		"Name=shop_id", "Value=17538", ENDITEM,
+		"Name=shopId", "Value=15738", ENDITEM,
+		"Name=spare_phone", "Value=18729171111", ENDITEM,
+		LAST);
+
+	if (atoi(lr_eval_string("{add_checkpoint}")) == 1){
+		lr_end_transaction("woniuxiaodian_member",LR_PASS);
+	}else{
+		lr_end_transaction("woniuxiaodian_member",LR_FAIL);
+	}
+	
+	
+	
+	//定义检查方法
+	web_reg_find("SaveCount=comm_checkpoint",
+		"Text=商品库存",
+		LAST);
+	lr_think_time(2);
+	//定义一个事务
+	lr_start_transaction("woniuxiaodian_comm");
+	//定义一个新增商品的检查方法
+	web_reg_find("SaveCount=addcomm_checkpoint",
+		"Text=add",
+		LAST);
+	// 发送一个post请求
+	web_submit_data("web_submit_data",
+		"Action=https://snailpet.com/v2/Product/add",
+		"Method=POST",
+		"EncType=",
+		"TargetFrame=",
+		"Referer=",
+		ITEMDATA,
+		"Name=shopId", "Value=17538", ENDITEM,
+		"Name=productId", "Value=0", ENDITEM,
+		"Name=barCode", "Value=0000585360167", ENDITEM,
+		"Name=isServer	", "Value=0", ENDITEM,
+		"Name=name	", "Value=哈哈狗粮", ENDITEM,
+		"Name=specifications", "Value=无", ENDITEM,
+		"Name=categoryId	", "Value=840174", ENDITEM,
+		"Name=inPrice	", "Value=20", ENDITEM,
+		"Name=outPrice	", "Value=30", ENDITEM,
+		"Name=percentage", "Value=0", ENDITEM,
+		"Name=stocks	", "Value=10", ENDITEM,
+		"Name=mark	", "Value=无", ENDITEM,
+		"Name=notice_stocks	", "Value=1", ENDITEM,
+		"Name=weight	", "Value=0", ENDITEM,
+		"Name=logo_images	", "Value=", ENDITEM,
+		"Name=detail_images	", "Value=", ENDITEM,
+		"Name=shelf_life	", "Value=100", ENDITEM,
+		"Name=production_time	", "Value=1585324800", ENDITEM,
+		"Name=is_share_vip	", "Value=1", ENDITEM,
+		"Name=is_use_point	", "Value=1", ENDITEM,
+		"Name=is_common_goods", "Value=1", ENDITEM,
+		"Name=is_open_commission", "Value=1", ENDITEM,
+		"Name=is_open_integral", "Value=1", ENDITEM,
+		"Name=freight_price	", "Value=10元/斤", ENDITEM,
+		"Name=detail", "Value=无", ENDITEM,
+		"Name=brand_name", "Value=", ENDITEM,
+		"Name=add_brand_name	", "Value=无", ENDITEM,
+		"Name=add_brand_category_id", "Value=8", ENDITEM,
+		"Name=product_tags	", "Value=13208", ENDITEM,
+		"Name=version	", "Value=1", ENDITEM,
+		"Name=shop_id	", "Value=17538", ENDITEM,
+		
+		LAST);
+	if (atoi(lr_eval_string("{addcomm_checkpoint}")) == 1){
+		lr_end_transaction("woniuxiaodian_comm",LR_PASS);
+	}else{
+		lr_end_transaction("woniuxiaodian_comm",LR_FAIL);
+	}
+	
+	
+	
+	
+	//定义的检查方法
+	web_reg_find("SaveCount=mem_checkpoint",
+		"Text=会员姓名",
+		LAST);
+	lr_think_time(2);
+	//定义一个事务
+	lr_start_transaction("woniuxiaodian_updatamem");
+	//定义一个修改会员的检查方法
+	web_reg_find("SaveCount=updatamem_checkpoint",
+		"Text=add",
+		LAST);
+	// 发送一个post请求
+	web_submit_data("web_submit_data",
+		"Action=https://snailpet.com/v2/Members/update",
+		"Method=POST",
+		"EncType=",
+		"TargetFrame=",
+		"Referer=",
+		ITEMDATA,
+		"Name=addr	", "Value=", ENDITEM,
+		"Name=cardNumber", "Value=0123456789", ENDITEM,
+		"Name=is_open_upgrade", "Value=1", ENDITEM,
+		"Name=is_spending_msg", "Value=1", ENDITEM,
+		"Name=mark", "Value=无", ENDITEM,
+		"Name=member_tags", "Value=44046", ENDITEM,
+		"Name=name", "Value=隔壁小刘", ENDITEM,
+		"Name=birthday", "Value=1577808000", ENDITEM,
+		"Name=color", "Value=黑色", ENDITEM,
+		"Name=is_birthday_notic", "Value=1", ENDITEM,
+		"Name=is_sterilization", "Value=0", ENDITEM,
+		"Name=mark", "Value=无", ENDITEM,
+		"Name=name", "Value=豆豆", ENDITEM,
+		"Name=sex", "Value=1", ENDITEM,
+		"Name=speciesId", "Value=15", ENDITEM,
+		"Name=weight_new", "Value=", ENDITEM,
+		"Name=phone", "Value=18729170000", ENDITEM,
+		"Name=sex", "Value=1", ENDITEM,
+		"Name=shop_id", "Value=17538", ENDITEM,
+		"Name=shopId", "Value=15738", ENDITEM,
+		"Name=spare_phone", "Value=18729171111", ENDITEM,
+		LAST);
+
+	if (atoi(lr_eval_string("{add_checkpoint}")) == 1){
+		lr_end_transaction("woniuxiaodian_updatamem",LR_PASS);
+	}else{
+		lr_end_transaction("woniuxiaodian_updatamem",LR_FAIL);
+	}
+	
+	
+	
+	//定义检查方法
+	web_reg_find("SaveCount=commm_checkpoint",
+		"Text=会员卡",
+		LAST);
+	lr_think_time(2);
+	//定义一个事务
+	lr_start_transaction("woniuxiaodian_addcommm");
+	//定义一个添加会员卡的检查方法
+	web_reg_find("SaveCount=addcommm_checkpoint",
+		"Text=add",
+		LAST);
+	// 发送一个post请求
+	web_submit_data("web_submit_data",
+		"Action=https://snailpet.com/v2/shopping_card/save",
+		"Method=POST",
+		"EncType=",
+		"TargetFrame=",
+		"Referer=",
+		ITEMDATA,
+		"Name=exp_time_type", "Value={addcomm}", ENDITEM,
+		"Name=integral_percentage", "Value={integral}", ENDITEM,
+		"Name=name", "Value={name}", ENDITEM,
+		"Name=shop_id	", "Value={shop_id}", ENDITEM,
+		"Name=shopId	", "Value={shopId}", ENDITEM,
+		
+		LAST);
+	if (atoi(lr_eval_string("{commm_checkpoint}")) == 1){
+		lr_end_transaction("woniuxiaodian_addcommm",LR_PASS);
+	}else{
+		lr_end_transaction("woniuxiaodian_addcommm",LR_FAIL);
+	}
+	
+	return 0;
+}
