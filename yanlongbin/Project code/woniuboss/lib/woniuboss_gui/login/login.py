@@ -1,10 +1,4 @@
-#!/usr/bin/env python
-# -*- coding:utf-8 -*-  
-#====#====#====#====   
-#Author:
-#CreatDate:
-#Version: 
-#====#====#====#====
+
 from woniuboss.tools.woniuboss_gui.service import Service
 
 

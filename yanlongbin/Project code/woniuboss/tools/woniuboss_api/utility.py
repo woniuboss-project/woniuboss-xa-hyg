@@ -108,7 +108,7 @@ class Utility:
             # 不管更新操作是否成功，都会返回真或假的结果
             return flag
 
-    # 从excel中读取内容,读取结果为【{},{},{}】
+    # 从excel中读取内容，读取结果为[{},{},{}]
     # 传递的参数是字典，包含的键是固定值
     @classmethod
     def get_excel_to_dict(cls, xls_file_info):
@@ -116,25 +116,27 @@ class Utility:
         workbook = xlrd.open_workbook(xls_file_info['DATAPATH'])
         # 可以根据sheet页的下标或者名称读取sheet页中的内容.下标从0开始
         contents = workbook.sheet_by_name(xls_file_info['SHEETNAME'])
-        # contents = workbook.sheet_by_index(0)
-        # 读取的目标是[{},{},{}]
         # 定义列表用于存储当前sheet页中的测试信息（测试数据+预期结果）
         test_info = []
         # 按行读取每一条测试信息
         for i in range(xls_file_info['STARTROW'], xls_file_info['ENDROW']):
+            test = []
             # 读取单元格中的内容
+            url = contents.cell(i, xls_file_info['URLCOL']).value
+            method = contents.cell(i, xls_file_info['METHODCOL']).value
+
             data = contents.cell(i, xls_file_info['DATACOL']).value
-            # 读取期望结果列
-            expect = contents.cell(i, xls_file_info['EXPECTCOL']).value
-            # 获取的是列表
             temp = data.split('\n')
+            # d指字典的测试数据
             d = {}
             for t in temp:
-            # 给字典添加内容：dict[key] = value
                 d[t.split('=')[0]] = t.split('=')[1]
-            d['expect'] = expect
-            test_info.append(d)
-            # print(test_info)
+
+            status_code = contents.cell(i, xls_file_info['CODECOL']).value
+            resp_content = contents.cell(i, xls_file_info['CONTENTCOL']).value
+            info = {'URL': url, 'METHOD': method, 'DATA': d, 'CODE': int(status_code), 'CONTENT': resp_content}
+            test.append(info)
+            test_info.append(info)
         # 将结果返回
         return test_info
     #从excel中读取内容,读取结果为【(),(),()】
@@ -151,6 +153,7 @@ class Utility:
     # 从excel中读取内容,读取结果为【{},{},{}】
     # 传递的参数是字典，包含的键是固定值
     # 该方法读取的是用户信息参数
+
 
     @classmethod
     def get_excel_to_user(cls, xls_file_info):

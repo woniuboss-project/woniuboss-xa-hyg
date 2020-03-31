@@ -1,10 +1,4 @@
-# -*- coding: utf-8 -*-#
-# -------------------------------------------------------------------------------
-# Name:         service
-# Description:  
-# Author:       Administrator
-# Date:         2020/2/11
-# -------------------------------------------------------------------------------
+
 # 对代码的重构（对代码及代码结构的优化）
 from woniuboss.tools.woniuboss_gui.utility import Utility
 from selenium import webdriver
