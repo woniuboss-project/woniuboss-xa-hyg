@@ -1,4 +1,10 @@
-
+# -*- coding: utf-8 -*-#
+#-------------------------------------------------------------------------------
+# Name:         test_customer
+# Description:  
+# Author:       Administrator
+# Date:         2020/2/13
+#-------------------------------------------------------------------------------
 import time
 import unittest
 from parameterized import parameterized

@@ -1,4 +1,10 @@
-
+# -*- coding: utf-8 -*-#
+#-------------------------------------------------------------------------------
+# Name:         customer
+# Description:  
+# Author:       Administrator
+# Date:         2020/2/10
+#-------------------------------------------------------------------------------
 from woniuboss.tools.woniuboss_gui.service import Service
 from selenium import webdriver
 
