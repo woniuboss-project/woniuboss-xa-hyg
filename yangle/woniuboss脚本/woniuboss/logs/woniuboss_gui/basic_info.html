@@ -1,0 +1,2106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Unit Test Report</title>
+    <meta name="generator" content="HTMLTestRunner 0.8.2"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    
+<style type="text/css" media="screen">
+body        { font-family: verdana, arial, helvetica, sans-serif; font-size: 80%; }
+table       { font-size: 100%; }
+pre         { }
+
+/* -- heading ---------------------------------------------------------------------- */
+h1 {
+	font-size: 16pt;
+	color: gray;
+}
+.heading {
+    margin-top: 0ex;
+    margin-bottom: 1ex;
+}
+
+.heading .attribute {
+    margin-top: 1ex;
+    margin-bottom: 0;
+}
+
+.heading .description {
+    margin-top: 4ex;
+    margin-bottom: 6ex;
+}
+
+/* -- css div popup ------------------------------------------------------------------------ */
+a.popup_link {
+}
+
+a.popup_link:hover {
+    color: red;
+}
+
+.popup_window {
+    display: none;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    /*border: solid #627173 1px; */
+    padding: 10px;
+    background-color: #E6E6D6;
+    font-family: "Lucida Console", "Courier New", Courier, monospace;
+    text-align: left;
+    font-size: 8pt;
+    width: 500px;
+}
+
+}
+/* -- report ------------------------------------------------------------------------ */
+#show_detail_line {
+    margin-top: 3ex;
+    margin-bottom: 1ex;
+}
+#result_table {
+    width: 80%;
+    border-collapse: collapse;
+    border: 1px solid #777;
+}
+#header_row {
+    font-weight: bold;
+    color: white;
+    background-color: #777;
+}
+#result_table td {
+    border: 1px solid #777;
+    padding: 2px;
+}
+#total_row  { font-weight: bold; }
+.passClass  { background-color: #6c6; }
+.failClass  { background-color: #c60; }
+.errorClass { background-color: #c00; }
+.passCase   { color: #6c6; }
+.failCase   { color: #c60; font-weight: bold; }
+.errorCase  { color: #c00; font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+
+
+/* -- ending ---------------------------------------------------------------------- */
+#ending {
+}
+
+</style>
+
+</head>
+<body>
+<script language="javascript" type="text/javascript"><!--
+output_list = Array();
+
+/* level - 0:Summary; 1:Failed; 2:All */
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (id.substr(0,2) == 'ft') {
+            if (level < 1) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+        if (id.substr(0,2) == 'pt') {
+            if (level > 1) {
+                tr.className = '';
+            }
+            else {
+                tr.className = 'hiddenRow';
+            }
+        }
+    }
+}
+
+
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        tid0 = 't' + cid.substr(1) + '.' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        if (toHide) {
+            document.getElementById('div_'+tid).style.display = 'none'
+            document.getElementById(tid).className = 'hiddenRow';
+        }
+        else {
+            document.getElementById(tid).className = '';
+        }
+    }
+}
+
+
+function showTestDetail(div_id){
+    var details_div = document.getElementById(div_id)
+    var displayState = details_div.style.display
+    // alert(displayState)
+    if (displayState != 'block' ) {
+        displayState = 'block'
+        details_div.style.display = 'block'
+    }
+    else {
+        details_div.style.display = 'none'
+    }
+}
+
+
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+
+/* obsoleted by detail in <div>
+function showOutput(id, name) {
+    var w = window.open("", //url
+                    name,
+                    "resizable,scrollbars,status,width=800,height=450");
+    d = w.document;
+    d.write("<pre>");
+    d.write(html_escape(output_list[id]));
+    d.write("\n");
+    d.write("<a href='javascript:window.close()'>close</a>\n");
+    d.write("</pre>\n");
+    d.close();
+}
+*/
+--></script>
+
+<div class='heading'>
+<h1>Unit Test Report</h1>
+<p class='attribute'><strong>Start Time:</strong> 2020-04-21 18:08:59</p>
+<p class='attribute'><strong>Duration:</strong> 0:14:30.514015</p>
+<p class='attribute'><strong>Status:</strong> Pass 4 Failure 40</p>
+
+<p class='description'></p>
+</div>
+
+
+
+<p id='show_detail_line'>Show
+<a href='javascript:showCase(0)'>Summary</a>
+<a href='javascript:showCase(1)'>Failed</a>
+<a href='javascript:showCase(2)'>All</a>
+</p>
+<table id='result_table'>
+<colgroup>
+<col align='left' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+</colgroup>
+<tr id='header_row'>
+    <td>Test Group/Test case</td>
+    <td>Count</td>
+    <td>Pass</td>
+    <td>Fail</td>
+    <td>Error</td>
+    <td>View</td>
+</tr>
+
+<tr class='failClass'>
+    <td>woniuboss.bin.woniuboss_gui.student_manage_test.a_basice_info_test.BasicInfoTest</td>
+    <td>44</td>
+    <td>4</td>
+    <td>40</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c1',44)">Detail</a></td>
+</tr>
+
+<tr id='pt1.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_a_serach_stu_info_0_WNCDC034</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_b_modify_stu_info_00__</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_b_modify_stu_info_01__</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='ft1.4' class='none'>
+    <td class='failCase'><div class='testcase'>test_b_modify_stu_info_02__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.4')" >
+        fail</a>
+
+    <div id='div_ft1.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.4: Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.5' class='none'>
+    <td class='failCase'><div class='testcase'>test_b_modify_stu_info_03_</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.5')" >
+        fail</a>
+
+    <div id='div_ft1.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.5: Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.6' class='none'>
+    <td class='failCase'><div class='testcase'>test_b_modify_stu_info_04_skwokekfkjjkfijufiujfdkjkekekoosa</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.6')" >
+        fail</a>
+
+    <div id='div_ft1.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.6: Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.7' class='none'>
+    <td class='failCase'><div class='testcase'>test_b_modify_stu_info_05__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.7')" >
+        fail</a>
+
+    <div id='div_ft1.7' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.7').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.7: Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.8' class='none'>
+    <td class='failCase'><div class='testcase'>test_b_modify_stu_info_06__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.8')" >
+        fail</a>
+
+    <div id='div_ft1.8' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.8').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.8: Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.9' class='none'>
+    <td class='failCase'><div class='testcase'>test_b_modify_stu_info_07__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.9')" >
+        fail</a>
+
+    <div id='div_ft1.9' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.9').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.9: Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.10' class='none'>
+    <td class='failCase'><div class='testcase'>test_b_modify_stu_info_08__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.10')" >
+        fail</a>
+
+    <div id='div_ft1.10' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.10').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.10: Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.11' class='none'>
+    <td class='failCase'><div class='testcase'>test_b_modify_stu_info_09__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.11')" >
+        fail</a>
+
+    <div id='div_ft1.11' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.11').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.11: Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.12' class='none'>
+    <td class='failCase'><div class='testcase'>test_b_modify_stu_info_10__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.12')" >
+        fail</a>
+
+    <div id='div_ft1.12' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.12').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.12: Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.13' class='none'>
+    <td class='failCase'><div class='testcase'>test_b_modify_stu_info_11__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.13')" >
+        fail</a>
+
+    <div id='div_ft1.13' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.13').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.13: Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.14' class='none'>
+    <td class='failCase'><div class='testcase'>test_b_modify_stu_info_12__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.14')" >
+        fail</a>
+
+    <div id='div_ft1.14' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.14').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.14: Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.15' class='none'>
+    <td class='failCase'><div class='testcase'>test_b_modify_stu_info_13__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.15')" >
+        fail</a>
+
+    <div id='div_ft1.15' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.15').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.15: Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.16' class='none'>
+    <td class='failCase'><div class='testcase'>test_b_modify_stu_info_14__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.16')" >
+        fail</a>
+
+    <div id='div_ft1.16' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.16').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.16: Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.17' class='none'>
+    <td class='failCase'><div class='testcase'>test_b_modify_stu_info_15__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.17')" >
+        fail</a>
+
+    <div id='div_ft1.17' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.17').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.17: Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.18' class='none'>
+    <td class='failCase'><div class='testcase'>test_b_modify_stu_info_16__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.18')" >
+        fail</a>
+
+    <div id='div_ft1.18' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.18').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.18: Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.19' class='none'>
+    <td class='failCase'><div class='testcase'>test_b_modify_stu_info_17__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.19')" >
+        fail</a>
+
+    <div id='div_ft1.19' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.19').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.19: Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.20' class='none'>
+    <td class='failCase'><div class='testcase'>test_b_modify_stu_info_18__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.20')" >
+        fail</a>
+
+    <div id='div_ft1.20' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.20').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.20: Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.21' class='none'>
+    <td class='failCase'><div class='testcase'>test_b_modify_stu_info_19__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.21')" >
+        fail</a>
+
+    <div id='div_ft1.21' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.21').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.21: Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.22' class='none'>
+    <td class='failCase'><div class='testcase'>test_b_modify_stu_info_20__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.22')" >
+        fail</a>
+
+    <div id='div_ft1.22' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.22').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.22: Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.23' class='none'>
+    <td class='failCase'><div class='testcase'>test_b_modify_stu_info_21__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.23')" >
+        fail</a>
+
+    <div id='div_ft1.23' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.23').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.23: Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.24' class='none'>
+    <td class='failCase'><div class='testcase'>test_b_modify_stu_info_22__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.24')" >
+        fail</a>
+
+    <div id='div_ft1.24' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.24').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.24: Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.25' class='none'>
+    <td class='failCase'><div class='testcase'>test_b_modify_stu_info_23__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.25')" >
+        fail</a>
+
+    <div id='div_ft1.25' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.25').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.25: Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.26' class='none'>
+    <td class='failCase'><div class='testcase'>test_b_modify_stu_info_24__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.26')" >
+        fail</a>
+
+    <div id='div_ft1.26' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.26').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.26: Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.27' class='none'>
+    <td class='failCase'><div class='testcase'>test_b_modify_stu_info_25__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.27')" >
+        fail</a>
+
+    <div id='div_ft1.27' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.27').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.27: Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.28' class='none'>
+    <td class='failCase'><div class='testcase'>test_b_modify_stu_info_26__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.28')" >
+        fail</a>
+
+    <div id='div_ft1.28' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.28').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.28: Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.29' class='none'>
+    <td class='failCase'><div class='testcase'>test_b_modify_stu_info_27__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.29')" >
+        fail</a>
+
+    <div id='div_ft1.29' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.29').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.29: Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.30' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_b_modify_stu_info_28__</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='ft1.31' class='none'>
+    <td class='failCase'><div class='testcase'>test_b_modify_stu_info_29__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.31')" >
+        fail</a>
+
+    <div id='div_ft1.31' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.31').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.31: Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.32' class='none'>
+    <td class='failCase'><div class='testcase'>test_b_modify_stu_info_30__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.32')" >
+        fail</a>
+
+    <div id='div_ft1.32' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.32').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.32: Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.33' class='none'>
+    <td class='failCase'><div class='testcase'>test_b_modify_stu_info_31__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.33')" >
+        fail</a>
+
+    <div id='div_ft1.33' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.33').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.33: Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.34' class='none'>
+    <td class='failCase'><div class='testcase'>test_b_modify_stu_info_32__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.34')" >
+        fail</a>
+
+    <div id='div_ft1.34' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.34').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.34: Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.35' class='none'>
+    <td class='failCase'><div class='testcase'>test_b_modify_stu_info_33__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.35')" >
+        fail</a>
+
+    <div id='div_ft1.35' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.35').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.35: Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.36' class='none'>
+    <td class='failCase'><div class='testcase'>test_b_modify_stu_info_34__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.36')" >
+        fail</a>
+
+    <div id='div_ft1.36' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.36').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.36: Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.37' class='none'>
+    <td class='failCase'><div class='testcase'>test_b_modify_stu_info_35__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.37')" >
+        fail</a>
+
+    <div id='div_ft1.37' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.37').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.37: Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.38' class='none'>
+    <td class='failCase'><div class='testcase'>test_b_modify_stu_info_36__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.38')" >
+        fail</a>
+
+    <div id='div_ft1.38' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.38').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.38: Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.39' class='none'>
+    <td class='failCase'><div class='testcase'>test_b_modify_stu_info_37__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.39')" >
+        fail</a>
+
+    <div id='div_ft1.39' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.39').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.39: Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.40' class='none'>
+    <td class='failCase'><div class='testcase'>test_b_modify_stu_info_38__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.40')" >
+        fail</a>
+
+    <div id='div_ft1.40' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.40').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.40: Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.41' class='none'>
+    <td class='failCase'><div class='testcase'>test_b_modify_stu_info_39__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.41')" >
+        fail</a>
+
+    <div id='div_ft1.41' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.41').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.41: Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.42' class='none'>
+    <td class='failCase'><div class='testcase'>test_b_modify_stu_info_40__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.42')" >
+        fail</a>
+
+    <div id='div_ft1.42' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.42').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.42: Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.43' class='none'>
+    <td class='failCase'><div class='testcase'>test_b_modify_stu_info_41__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.43')" >
+        fail</a>
+
+    <div id='div_ft1.43' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.43').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.43: Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.44' class='none'>
+    <td class='failCase'><div class='testcase'>test_b_modify_stu_info_42__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.44')" >
+        fail</a>
+
+    <div id='div_ft1.44' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.44').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.44: Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 55, in test_b_modify_stu_info
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify stu_info fail' != 'test modify stu_info pass'
+- test modify stu_info fail
+?                      ^ ^^
++ test modify stu_info pass
+?                      ^ ^^
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='total_row'>
+    <td>Total</td>
+    <td>44</td>
+    <td>4</td>
+    <td>40</td>
+    <td>0</td>
+    <td>&nbsp;</td>
+</tr>
+</table>
+
+<div id='ending'>&nbsp;</div>
+
+</body>
+</html>

@@ -1,0 +1,902 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Unit Test Report</title>
+    <meta name="generator" content="HTMLTestRunner 0.8.2"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    
+<style type="text/css" media="screen">
+body        { font-family: verdana, arial, helvetica, sans-serif; font-size: 80%; }
+table       { font-size: 100%; }
+pre         { }
+
+/* -- heading ---------------------------------------------------------------------- */
+h1 {
+	font-size: 16pt;
+	color: gray;
+}
+.heading {
+    margin-top: 0ex;
+    margin-bottom: 1ex;
+}
+
+.heading .attribute {
+    margin-top: 1ex;
+    margin-bottom: 0;
+}
+
+.heading .description {
+    margin-top: 4ex;
+    margin-bottom: 6ex;
+}
+
+/* -- css div popup ------------------------------------------------------------------------ */
+a.popup_link {
+}
+
+a.popup_link:hover {
+    color: red;
+}
+
+.popup_window {
+    display: none;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    /*border: solid #627173 1px; */
+    padding: 10px;
+    background-color: #E6E6D6;
+    font-family: "Lucida Console", "Courier New", Courier, monospace;
+    text-align: left;
+    font-size: 8pt;
+    width: 500px;
+}
+
+}
+/* -- report ------------------------------------------------------------------------ */
+#show_detail_line {
+    margin-top: 3ex;
+    margin-bottom: 1ex;
+}
+#result_table {
+    width: 80%;
+    border-collapse: collapse;
+    border: 1px solid #777;
+}
+#header_row {
+    font-weight: bold;
+    color: white;
+    background-color: #777;
+}
+#result_table td {
+    border: 1px solid #777;
+    padding: 2px;
+}
+#total_row  { font-weight: bold; }
+.passClass  { background-color: #6c6; }
+.failClass  { background-color: #c60; }
+.errorClass { background-color: #c00; }
+.passCase   { color: #6c6; }
+.failCase   { color: #c60; font-weight: bold; }
+.errorCase  { color: #c00; font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+
+
+/* -- ending ---------------------------------------------------------------------- */
+#ending {
+}
+
+</style>
+
+</head>
+<body>
+<script language="javascript" type="text/javascript"><!--
+output_list = Array();
+
+/* level - 0:Summary; 1:Failed; 2:All */
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (id.substr(0,2) == 'ft') {
+            if (level < 1) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+        if (id.substr(0,2) == 'pt') {
+            if (level > 1) {
+                tr.className = '';
+            }
+            else {
+                tr.className = 'hiddenRow';
+            }
+        }
+    }
+}
+
+
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        tid0 = 't' + cid.substr(1) + '.' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        if (toHide) {
+            document.getElementById('div_'+tid).style.display = 'none'
+            document.getElementById(tid).className = 'hiddenRow';
+        }
+        else {
+            document.getElementById(tid).className = '';
+        }
+    }
+}
+
+
+function showTestDetail(div_id){
+    var details_div = document.getElementById(div_id)
+    var displayState = details_div.style.display
+    // alert(displayState)
+    if (displayState != 'block' ) {
+        displayState = 'block'
+        details_div.style.display = 'block'
+    }
+    else {
+        details_div.style.display = 'none'
+    }
+}
+
+
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+
+/* obsoleted by detail in <div>
+function showOutput(id, name) {
+    var w = window.open("", //url
+                    name,
+                    "resizable,scrollbars,status,width=800,height=450");
+    d = w.document;
+    d.write("<pre>");
+    d.write(html_escape(output_list[id]));
+    d.write("\n");
+    d.write("<a href='javascript:window.close()'>close</a>\n");
+    d.write("</pre>\n");
+    d.close();
+}
+*/
+--></script>
+
+<div class='heading'>
+<h1>Unit Test Report</h1>
+<p class='attribute'><strong>Start Time:</strong> 2020-04-21 21:11:40</p>
+<p class='attribute'><strong>Duration:</strong> 0:06:48.196706</p>
+<p class='attribute'><strong>Status:</strong> Pass 11 Failure 6 Error 2</p>
+
+<p class='description'></p>
+</div>
+
+
+
+<p id='show_detail_line'>Show
+<a href='javascript:showCase(0)'>Summary</a>
+<a href='javascript:showCase(1)'>Failed</a>
+<a href='javascript:showCase(2)'>All</a>
+</p>
+<table id='result_table'>
+<colgroup>
+<col align='left' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+</colgroup>
+<tr id='header_row'>
+    <td>Test Group/Test case</td>
+    <td>Count</td>
+    <td>Pass</td>
+    <td>Fail</td>
+    <td>Error</td>
+    <td>View</td>
+</tr>
+
+<tr class='failClass'>
+    <td>woniuboss.bin.woniuboss_gui.student_manage_test.h_class_manage_test.ClassManageTest</td>
+    <td>9</td>
+    <td>8</td>
+    <td>1</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c1',9)">Detail</a></td>
+</tr>
+
+<tr id='pt1.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_a_query_stu_info_0__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.1')" >
+        pass</a>
+
+    <div id='div_pt1.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_a_query_stu_info_1__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.2')" >
+        pass</a>
+
+    <div id='div_pt1.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_a_query_stu_info_2__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.3')" >
+        pass</a>
+
+    <div id='div_pt1.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.3: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_a_query_stu_info_3__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.4')" >
+        pass</a>
+
+    <div id='div_pt1.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.4: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_b_seperate_class_0_WNCDC034</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.5')" >
+        pass</a>
+
+    <div id='div_pt1.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.5: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_b_seperate_class_1_WNCDC034</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.6')" >
+        pass</a>
+
+    <div id='div_pt1.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.6: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.7' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_b_seperate_class_2__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.7')" >
+        pass</a>
+
+    <div id='div_pt1.7' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.7').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.7: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.8' class='none'>
+    <td class='failCase'><div class='testcase'>test_b_seperate_class_3_WNCDC033</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.8')" >
+        fail</a>
+
+    <div id='div_ft1.8' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.8').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.8: Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\h_class_manage_test.py", line 65, in test_b_seperate_class
+    cls.assertEqual(expect, actual)
+AssertionError: 'test seperate class fail' != 'test seperate class pass'
+- test seperate class fail
+?                     ^ ^^
++ test seperate class pass
+?                     ^ ^^
+
+Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\h_class_manage_test.py", line 65, in test_b_seperate_class
+    cls.assertEqual(expect, actual)
+AssertionError: 'test seperate class fail' != 'test seperate class pass'
+- test seperate class fail
+?                     ^ ^^
++ test seperate class pass
+?                     ^ ^^
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.9' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_b_seperate_class_4_WNCDC035</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.9')" >
+        pass</a>
+
+    <div id='div_pt1.9' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.9').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.9: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>woniuboss.bin.woniuboss_gui.student_manage_test.i_curriculum_manage_test.CourseScheduleTest</td>
+    <td>10</td>
+    <td>3</td>
+    <td>5</td>
+    <td>2</td>
+    <td><a href="javascript:showClassDetail('c2',10)">Detail</a></td>
+</tr>
+
+<tr id='ft2.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_a_query_info_0__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft2.1')" >
+        error</a>
+
+    <div id='div_ft2.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft2.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft2.1: Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\i_curriculum_manage_test.py", line 33, in test_a_query_info
+    db_result = Utility.query_one(user_info,sql)
+  File "D:\python\yangle0103\woniuboss\tools\woniuboss_gui\utility.py", line 74, in query_one
+    cursor.execute(sql)
+  File "D:\python\python36\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "D:\python\python36\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "D:\python\python36\lib\site-packages\pymysql\connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "D:\python\python36\lib\site-packages\pymysql\connections.py", line 732, in _read_query_result
+    result.read()
+  File "D:\python\python36\lib\site-packages\pymysql\connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "D:\python\python36\lib\site-packages\pymysql\connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "D:\python\python36\lib\site-packages\pymysql\protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "D:\python\python36\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.InternalError: (1054, "Unknown column 'WNCD005' in 'where clause'")
+Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\i_curriculum_manage_test.py", line 33, in test_a_query_info
+    db_result = Utility.query_one(user_info,sql)
+  File "D:\python\yangle0103\woniuboss\tools\woniuboss_gui\utility.py", line 74, in query_one
+    cursor.execute(sql)
+  File "D:\python\python36\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "D:\python\python36\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "D:\python\python36\lib\site-packages\pymysql\connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "D:\python\python36\lib\site-packages\pymysql\connections.py", line 732, in _read_query_result
+    result.read()
+  File "D:\python\python36\lib\site-packages\pymysql\connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "D:\python\python36\lib\site-packages\pymysql\connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "D:\python\python36\lib\site-packages\pymysql\protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "D:\python\python36\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.InternalError: (1054, "Unknown column 'WNCD005' in 'where clause'")
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt2.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_b_add_course_schedule_0_</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.2')" >
+        pass</a>
+
+    <div id='div_pt2.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft2.3' class='none'>
+    <td class='failCase'><div class='testcase'>test_b_add_course_schedule_1_2020_04_20</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft2.3')" >
+        fail</a>
+
+    <div id='div_ft2.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft2.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft2.3: Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\i_curriculum_manage_test.py", line 77, in test_b_add_course_schedule
+    cls.assertEqual(expect,actual)
+AssertionError: 'test add course schedule fail' != 'test add course schedule pass'
+- test add course schedule fail
+?                          ^ ^^
++ test add course schedule pass
+?                          ^ ^^
+
+Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\i_curriculum_manage_test.py", line 77, in test_b_add_course_schedule
+    cls.assertEqual(expect,actual)
+AssertionError: 'test add course schedule fail' != 'test add course schedule pass'
+- test add course schedule fail
+?                          ^ ^^
++ test add course schedule pass
+?                          ^ ^^
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt2.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_b_add_course_schedule_2_2020_04_20</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.4')" >
+        pass</a>
+
+    <div id='div_pt2.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.4: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft2.5' class='none'>
+    <td class='failCase'><div class='testcase'>test_b_add_course_schedule_3_2020_04_21</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft2.5')" >
+        fail</a>
+
+    <div id='div_ft2.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft2.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft2.5: Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\i_curriculum_manage_test.py", line 77, in test_b_add_course_schedule
+    cls.assertEqual(expect,actual)
+AssertionError: 'test add course schedule fail' != 'test add course schedule pass'
+- test add course schedule fail
+?                          ^ ^^
++ test add course schedule pass
+?                          ^ ^^
+
+Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\i_curriculum_manage_test.py", line 77, in test_b_add_course_schedule
+    cls.assertEqual(expect,actual)
+AssertionError: 'test add course schedule fail' != 'test add course schedule pass'
+- test add course schedule fail
+?                          ^ ^^
++ test add course schedule pass
+?                          ^ ^^
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft2.6' class='none'>
+    <td class='failCase'><div class='testcase'>test_b_add_course_schedule_4_2020_04_22</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft2.6')" >
+        fail</a>
+
+    <div id='div_ft2.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft2.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft2.6: Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\i_curriculum_manage_test.py", line 77, in test_b_add_course_schedule
+    cls.assertEqual(expect,actual)
+AssertionError: 'test add course schedule fail' != 'test add course schedule pass'
+- test add course schedule fail
+?                          ^ ^^
++ test add course schedule pass
+?                          ^ ^^
+
+Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\i_curriculum_manage_test.py", line 77, in test_b_add_course_schedule
+    cls.assertEqual(expect,actual)
+AssertionError: 'test add course schedule fail' != 'test add course schedule pass'
+- test add course schedule fail
+?                          ^ ^^
++ test add course schedule pass
+?                          ^ ^^
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft2.7' class='none'>
+    <td class='failCase'><div class='testcase'>test_b_add_course_schedule_5_2020_04_20</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft2.7')" >
+        fail</a>
+
+    <div id='div_ft2.7' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft2.7').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft2.7: Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\i_curriculum_manage_test.py", line 77, in test_b_add_course_schedule
+    cls.assertEqual(expect,actual)
+AssertionError: 'test add course schedule fail' != 'test add course schedule pass'
+- test add course schedule fail
+?                          ^ ^^
++ test add course schedule pass
+?                          ^ ^^
+
+Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\i_curriculum_manage_test.py", line 77, in test_b_add_course_schedule
+    cls.assertEqual(expect,actual)
+AssertionError: 'test add course schedule fail' != 'test add course schedule pass'
+- test add course schedule fail
+?                          ^ ^^
++ test add course schedule pass
+?                          ^ ^^
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt2.8' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_c_modify_course_schedule_0_2020_04_03</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='ft2.9' class='none'>
+    <td class='failCase'><div class='testcase'>test_c_modify_course_schedule_1_2020_04_25</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft2.9')" >
+        fail</a>
+
+    <div id='div_ft2.9' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft2.9').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft2.9: Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\i_curriculum_manage_test.py", line 87, in test_c_modify_course_schedule
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify course schedule fail' != 'test modify course schedule pass'
+- test modify course schedule fail
+?                             ^ ^^
++ test modify course schedule pass
+?                             ^ ^^
+
+Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\i_curriculum_manage_test.py", line 87, in test_c_modify_course_schedule
+    cls.assertEqual(expect,actual)
+AssertionError: 'test modify course schedule fail' != 'test modify course schedule pass'
+- test modify course schedule fail
+?                             ^ ^^
++ test modify course schedule pass
+?                             ^ ^^
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft2.10' class='none'>
+    <td class='errorCase'><div class='testcase'>test_c_modify_course_schedule_2_2020_04_25</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft2.10')" >
+        error</a>
+
+    <div id='div_ft2.10' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft2.10').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft2.10: Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\i_curriculum_manage_test.py", line 81, in test_c_modify_course_schedule
+    attr = cls.course_schedule.do_modify_curriculum(s_time,e_time,status,orientation,course,class_num,classroom)
+  File "D:\python\yangle0103\woniuboss\lib\woniuboss_gui\student_manage\course_schedule.py", line 356, in do_modify_curriculum
+    self.select_modify_classroom(classroom)
+  File "D:\python\yangle0103\woniuboss\lib\woniuboss_gui\student_manage\course_schedule.py", line 335, in select_modify_classroom
+    Service.box_css_click(self.driver,'#modifyCourseForm &gt; div &gt; div &gt; div:nth-child(8) &gt; select',classroom)
+  File "D:\python\yangle0103\woniuboss\tools\woniuboss_gui\service.py", line 48, in box_css_click
+    Select(driver.find_element_by_css_selector(location)).select_by_visible_text(content)
+  File "D:\python\python36\lib\site-packages\selenium\webdriver\support\select.py", line 140, in select_by_visible_text
+    raise NoSuchElementException("Could not locate element with visible text: %s" % text)
+selenium.common.exceptions.NoSuchElementException: Message: Could not locate element with visible text: 
+
+Traceback (most recent call last):
+  File "D:\python\python36\lib\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\yangle0103\woniuboss\bin\woniuboss_gui\student_manage_test\i_curriculum_manage_test.py", line 81, in test_c_modify_course_schedule
+    attr = cls.course_schedule.do_modify_curriculum(s_time,e_time,status,orientation,course,class_num,classroom)
+  File "D:\python\yangle0103\woniuboss\lib\woniuboss_gui\student_manage\course_schedule.py", line 356, in do_modify_curriculum
+    self.select_modify_classroom(classroom)
+  File "D:\python\yangle0103\woniuboss\lib\woniuboss_gui\student_manage\course_schedule.py", line 335, in select_modify_classroom
+    Service.box_css_click(self.driver,'#modifyCourseForm &gt; div &gt; div &gt; div:nth-child(8) &gt; select',classroom)
+  File "D:\python\yangle0103\woniuboss\tools\woniuboss_gui\service.py", line 48, in box_css_click
+    Select(driver.find_element_by_css_selector(location)).select_by_visible_text(content)
+  File "D:\python\python36\lib\site-packages\selenium\webdriver\support\select.py", line 140, in select_by_visible_text
+    raise NoSuchElementException("Could not locate element with visible text: %s" % text)
+selenium.common.exceptions.NoSuchElementException: Message: Could not locate element with visible text: 
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='total_row'>
+    <td>Total</td>
+    <td>19</td>
+    <td>11</td>
+    <td>6</td>
+    <td>2</td>
+    <td>&nbsp;</td>
+</tr>
+</table>
+
+<div id='ending'>&nbsp;</div>
+
+</body>
+</html>
