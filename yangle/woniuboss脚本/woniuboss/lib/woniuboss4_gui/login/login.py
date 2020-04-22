@@ -1,6 +1,4 @@
-
 from woniuboss.tools.woniuboss_gui.service import Service
-
 
 class Login:
 
@@ -22,15 +20,20 @@ class Login:
         ucode = self.driver.find_element_by_name('checkcode')
         Service.send_input(ucode, code)
 
-
- # 点击登录按钮
+    # 点击登录按钮
     def click_button(self):
-        self.driver.find_element_by_css_selector('.btn').click()
-# 将以上的动作进行组织，形成整体的登录操作,参数login_data是字典
-    def do_login(self,base_config_path,login_data):
+        self.driver.find_element_by_css_selector('#form-login > div > div > div.modal-footer > button').click()
 
-        Service.open_page(self.driver,base_config_path)
+    # 将以上的动作进行组织，形成整体的登录操作,参数login_data是字典
+    def do_login(self, base_config_path, login_data):
+        Service.open_page(self.driver, base_config_path)
         self.input_uname(login_data['username'])
         self.input_upass(login_data['password'])
         self.input_code(login_data['code'])
+        self.click_button()
+
+    def login(self,base_config_path):
+        Service.open_page(self.driver,base_config_path)
+        self.input_uname(base_config_path['username'])
+        self.input_upass(base_config_path['password'])
         self.click_button()

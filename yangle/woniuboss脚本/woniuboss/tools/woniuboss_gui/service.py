@@ -88,6 +88,8 @@ class Service:
         contents = base_config_path
         driver.add_cookie({'name': 'token', 'value': '95F275D91F271160DB0BBEEC42F08026'})
         driver.add_cookie({'name': 'workId', 'value': contents['username']})
+        # driver.add_cookie({'name':'rememberMe','value':'deleteMe'})
+        # driver.add_cookie({'name':'_jfinal_captcha','vaiue':'c7a89fd496044621b3fcdfd560ed3f06'})
         cls.open_page(driver, base_config_path)
 
 
@@ -99,6 +101,7 @@ class Service:
         contents = path
         URL = 'http://%s:%s/%s' % (contents['HOSTNAME'], contents['PORT'], contents['AURL'])
         driver.get(URL)
+
 
     # 截图.仅进行截图操作
     @classmethod
@@ -122,5 +125,5 @@ class Service:
         driver.implicitly_wait(10)
         driver.maximize_window()
         url = 'http://%s:%s/%s' % (contents['HOSTNAME'], contents['PORT'], contents['AURL'])
-        driver.get(url)
+        # driver.get(url)
         return driver
