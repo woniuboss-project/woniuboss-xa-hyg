@@ -43,7 +43,6 @@ class WeekExamResult:
         ele = self.driver.find_element_by_css_selector('#pe-result > tbody > tr:nth-child(1) > '
                                                  'td:nth-child(9) > button')
         ele.click()
-        return ele.get_attribute('onclick')
 
     def select_box_class(self,class_name):
         Service.box_id_click(self.driver,'we_cl',class_name)
@@ -64,14 +63,16 @@ class WeekExamResult:
     def do_entry_sigle_score(self,class_name,phase,week,score):
         self.click_student_manage_link()
         self.click_week_exam_link()
-        attr = self.click_entry_btn()
         time.sleep(2)
+        self.click_entry_btn()
+
         self.select_box_class(class_name)
         self.select_box_phase(phase)
         self.select_box_week(week)
         self.input_box_score(score)
         self.click_box_save_btn()
-        return attr
+        time.sleep(5)
+
 
     def click_week_exam_import_btn(self):
         self.driver.find_element_by_css_selector('#stagetest > div.col-lg-12.col-md-12.col-sm-12.col-xs-12.'
@@ -92,7 +93,7 @@ class WeekExamResult:
 
     # body > div.bootbox.modal.fade.mydialog. in > div > div
     def click_upload_save_btn(self):
-        self.driver.find_element_by_css_selector('#upRes-modal > div > div > div.modal-footer > button').xlixk()
+        self.driver.find_element_by_css_selector('#upRes-modal > div > div > div.modal-footer > button').click()
 
     def do_upload_week_exam(self,class_name,phase,week,file_path):
         self.click_student_manage_link()
@@ -102,3 +103,4 @@ class WeekExamResult:
         self.select_upload_phase(phase)
         self.select_upload_week(week)
         self.select_upload_file(file_path)
+        self.click_upload_save_btn()
