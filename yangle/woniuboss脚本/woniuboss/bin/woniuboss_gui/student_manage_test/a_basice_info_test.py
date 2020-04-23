@@ -13,7 +13,7 @@ search_stu_info = Utility.get_excel_to_tuple(test_config_info[0])
 search_stu_user_info = Utility.get_excel_to_user(test_config_info[0])
 
 modify_stu_info = Utility.get_excel_to_tuple(test_config_info[1])
-modify_stu_user_info = Utility.get_excel_to_user(test_config_info[1])
+# modify_stu_user_info = Utility.get_excel_to_user(test_config_info[1])
 
 class BasicInfoTest(unittest.TestCase):
     @classmethod
