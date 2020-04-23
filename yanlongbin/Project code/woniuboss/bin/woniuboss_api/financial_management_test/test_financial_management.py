@@ -28,6 +28,7 @@ class FinancialManagementTest(unittest.TestCase):
 
 	@parameterized.expand(fm_page_info)
 	def test_fm_page(self, url, action, data, code, expect):
+		# FM_001
 		fm_page_url = f'{url}'
 		fm_page_resp = FinancialManagement().do_fm_page(fm_page_url, data)
 		fm_page_code = fm_page_resp.status_code
@@ -40,6 +41,7 @@ class FinancialManagementTest(unittest.TestCase):
 		self.assertEqual(actual, expect)
 
 	@parameterized.expand(fm_last_info)
+	# FM_002
 	def test_fm_last(self, url, action, data, code, expect):
 		fm_last_url = f'{url}'
 		fm_last_resp = FinancialManagement().do_fm_last(fm_last_url, data)
@@ -53,6 +55,7 @@ class FinancialManagementTest(unittest.TestCase):
 		self.assertEqual(actual, expect)
 
 	@parameterized.expand(fm_this_info)
+	# FM_003
 	def test_fm_this(self, url, action, data, code, expect):
 		fm_this_url = f'{url}'
 		fm_this_resp = FinancialManagement().do_fm_this(fm_this_url, data)
@@ -66,6 +69,7 @@ class FinancialManagementTest(unittest.TestCase):
 		self.assertEqual(actual, expect)
 
 	@parameterized.expand(fm_new_info)
+	# FM_004
 	def test_fm_new(self, url, action, data, code, expect):
 		fm_new_url = f'{url}'
 		fm_new_resp = FinancialManagement().do_fm_new(fm_new_url, data)
@@ -79,6 +83,7 @@ class FinancialManagementTest(unittest.TestCase):
 		self.assertEqual(actual, expect)
 
 	@parameterized.expand(fm_modify_info)
+	# FM_005
 	def test_fm_modify(self, url, action, data, code, expect):
 		fm_modify_url = f'{url}'
 		fm_modify_resp = FinancialManagement().do_fm_modify(fm_modify_url, data)
@@ -92,6 +97,7 @@ class FinancialManagementTest(unittest.TestCase):
 		self.assertEqual(actual, expect)
 
 	@parameterized.expand(fm_pay_info)
+	# FM_006
 	def test_fm_pay(self, url, action, data, code, expect):
 		fm_pay_url = f'{url}'
 		fm_pay_resp = FinancialManagement().do_fm_pay(fm_pay_url, data)
@@ -105,6 +111,7 @@ class FinancialManagementTest(unittest.TestCase):
 		self.assertEqual(actual, expect)
 
 	@parameterized.expand(fm_page_info)
+	# FM_007
 	def test_fm_page(self, url, action, data, code, expect):
 		fm_page_url = f'{url}'
 		fm_page_resp = FinancialManagement().do_fm_page(fm_page_url, data)

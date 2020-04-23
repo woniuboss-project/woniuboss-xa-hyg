@@ -22,7 +22,8 @@ class PersonnelManagementTest(unittest.TestCase):
 		print("test end")
 
 	@parameterized.expand(pm_page_info)
-	def test_fm_page(self, url, action, data, code, expect):
+	# PM_001
+	def test_pm_page(self, url, action, data, code, expect):
 		pm_page_url = f'{url}'
 		pm_page_resp = PersonnelManagement().do_pm_query(pm_page_url, data)
 		pm_page_code = pm_page_resp.status_code
@@ -37,7 +38,8 @@ class PersonnelManagementTest(unittest.TestCase):
 
 
 	@parameterized.expand(pm_new_info)
-	def test_new_page(self, url, action, data, code, expect):
+	# PM_002
+	def test_pm_new_page(self, url, action, data, code, expect):
 		pm_new_url = f'{url}'
 		pm_new_resp = PersonnelManagement().do_pm_new(pm_new_url, data)
 		pm_new_code = pm_new_resp.json()
@@ -50,7 +52,8 @@ class PersonnelManagementTest(unittest.TestCase):
 		self.assertEqual(actual, expect)
 
 	@parameterized.expand(pm_modify_info)
-	def test_modify_page(self, url, action, data, code, expect):
+	# PM_003
+	def test_pm_modify_page(self, url, action, data, code, expect):
 		pm_modify_url = f'{url}'
 		pm_modify_resp = PersonnelManagement().do_pm_modify(pm_modify_url, data)
 		pm_modify_code = pm_modify_resp.json()

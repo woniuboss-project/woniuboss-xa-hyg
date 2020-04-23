@@ -33,6 +33,7 @@ class EmploymentManagementTest(unittest.TestCase):
 		print("test end")
 
 	@parameterized.expand(em_page_info)
+	# EM_001
 	def test_em_page(self, url, action, data, code, expect):
 		em_page_url = f'{url}'
 		em_page_resp = EmploymentManagement().do_em_page(em_page_url)
@@ -52,6 +53,7 @@ class EmploymentManagementTest(unittest.TestCase):
 		self.assertEqual(actual, expect)
 		
 	@parameterized.expand(em_all_info)
+	# EM_002
 	def test_em_all(self, url, action, data, code, expect):
 		em_all_url = f'{url}'
 		em_all_resp = EmploymentManagement().do_em_all(em_all_url, data)
@@ -65,6 +67,7 @@ class EmploymentManagementTest(unittest.TestCase):
 		self.assertEqual(actual, expect)
 		
 	@parameterized.expand(em_through_info)
+	# EM_003
 	def test_em_through(self, url, action, data, code, expect):
 		em_through_url = f'{url}'
 		em_through_resp = EmploymentManagement().do_em_through(em_through_url, data)
@@ -78,6 +81,7 @@ class EmploymentManagementTest(unittest.TestCase):
 		self.assertEqual(actual, expect)
 		
 	@parameterized.expand(em_not_through_info)
+	# EM_004
 	def test_em_not_through(self, url, action, data, code, expect):
 		em_not_through_url = f'{url}'
 		em_not_through_resp = EmploymentManagement().do_em_not_through(em_not_through_url, data)
@@ -91,6 +95,7 @@ class EmploymentManagementTest(unittest.TestCase):
 		self.assertEqual(actual, expect)
 		
 	@parameterized.expand(em_search_info)
+	# EM_005
 	def test_em_search(self, url, action, data, code, expect):
 		em_search_url = f'{url}'
 		em_search_resp = EmploymentManagement().do_em_search(em_search_url, data)
@@ -104,6 +109,7 @@ class EmploymentManagementTest(unittest.TestCase):
 		self.assertEqual(actual, expect)
 		
 	@parameterized.expand(em_real_info)
+	# EM_006
 	def test_em_real(self, url, action, data, code, expect):
 		em_real_url = f'{url}'
 		em_real_resp = EmploymentManagement().do_em_real(em_real_url, data)
@@ -117,6 +123,7 @@ class EmploymentManagementTest(unittest.TestCase):
 		self.assertEqual(actual, expect)
 		
 	@parameterized.expand(em_induction_info)
+	# EM_007
 	def test_em_induction(self, url, action, data, code, expect):
 		em_induction_url = f'{url}'
 		em_induction_resp = EmploymentManagement().do_em_induction(em_induction_url, data)
@@ -130,6 +137,7 @@ class EmploymentManagementTest(unittest.TestCase):
 		self.assertEqual(actual, expect)
 
 	@parameterized.expand(em_technology_info)
+	# EM_008
 	def test_em_technology(self, url, action, data, code, expect):
 		ispass = request.quote(data.get('ispass'))
 		student_id = data.get('sr.skillrecord_student_id')

@@ -1,13 +1,130 @@
 
 # 对代码的重构（对代码及代码结构的优化）
+from time import sleep
+
+from selenium.webdriver.support.select import Select
+
 from woniuboss.tools.woniuboss_gui.utility import Utility
 from selenium import webdriver
 import json
 import unittest
+
 import xlrd
 class Service:
 
-    # 点击查新 (使用xpath，text)
+    # 元素内容text
+    @classmethod
+    def text_css(cls, driver, text_css):
+        text_css = driver.find_element_by_css(text_css).text
+
+    # 下拉框内容获取
+    @classmethod
+    def box_content_id(cls, driver, box_id):
+        box = Select(driver.find_element_by_id(box_id)).options
+        box_list = []
+        for i in box:
+            box_list.append(i.text)
+        return box_list
+
+    @classmethod
+    def box_content_css(cls, driver, box_css):
+        box = Select(driver.find_element_by_css(box_css)).options
+        box_list = []
+        for i in box:
+            box_list.append(i.text)
+        return box_list
+
+
+
+    # 登录
+    @classmethod
+    def login_account(cls, own, user_info):
+        from woniuboss.lib.woniuboss_gui.login.login import Login
+        login_data = {'username': user_info['username'], 'password': user_info['password'],'code':'0000'}
+        Login(own.driver).do_login(user_info, login_data)
+
+    # 解密
+    @classmethod
+    def decryption(cls, driver):
+
+        try:
+            cls.click_id(driver, 'btn-decrypt')
+            sleep(5)
+            click = driver.find_element_by_xpath('/html/body/div[6]/div/div/div[2]/input')
+
+            cls.send_input(click, 'woniu123')
+            cls.click_text(driver, '确定')
+        except Exception as e:
+            print('解密失败')
+
+    # 点击
+    @classmethod
+    def click_xpath(cls, driver, location):
+
+        driver.find_element_by_xpath(location).click()
+
+    @classmethod
+    def click_id(cls, driver, location):
+
+        driver.find_element_by_id(location).click()
+
+    @classmethod
+    def click_css(cls, driver, location):
+
+        driver.find_element_by_css(location).click()
+
+    @classmethod
+    def click_text(cls, driver, location):
+
+        driver.find_element_by_link_text(location).click()
+
+    # 文件上传
+    @classmethod
+    def file_upload(cls, driver, location, path):
+
+        upload = driver.find_element_by_id(location)
+        upload.send_keys(path)
+
+    # 翻页
+
+    # 判断页面上的某个元素是否存在
+    # 该方法依赖于webdriver库
+    @classmethod
+    def is_element_present(cls, driver, how, what):
+
+        from selenium.common.exceptions import NoSuchElementException
+        try:
+            driver.find_element(by=how, value=what)
+        except NoSuchElementException as e:
+            # 表示没找到
+            return False
+        return True
+
+    # 判断页面上的某个元素文字是否与预期一致
+    @classmethod
+    def expected_text_xpath(cls, driver, location):
+
+        actual = driver.find_element_by_xpath(location).text
+
+        return actual
+
+    @classmethod
+    def expected_text_css(cls, driver, location):
+
+        actual = driver.find_element_by_css(location).text
+
+        return actual
+
+    @classmethod
+    def expected_text_id(cls, driver, location):
+
+        actual = driver.find_element_by_id(location).text
+
+        return actual
+
+
+
+    # 点击下拉框 (使用xpath，text)
     @classmethod
     def box_xpath_click(cls, driver,location,content):
         # 导入select工具，它专用于处理页面上的下拉框，通过传入下拉框里的值进行操作
@@ -25,6 +142,7 @@ class Service:
         # 导入select工具，它专用于处理页面上的下拉框，通过传入下拉框里的值进行操作
         from selenium.webdriver.support.select import Select
         Select(driver.find_element_id_css(location)).select_by_visible_text(content)
+
 
 
     # 向一个文本输入框执行三个固定操作：点击、清理、输入
