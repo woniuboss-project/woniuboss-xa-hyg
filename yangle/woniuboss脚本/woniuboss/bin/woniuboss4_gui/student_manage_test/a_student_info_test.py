@@ -15,6 +15,7 @@ search_stu_user_info = Utility.get_excel_to_user(test_config_info[0])
 modify_stu_info = Utility.get_excel_to_tuple(test_config_info[1])
 
 class StudentInfoTest(unittest.TestCase):
+
     @classmethod
     def setUpClass(cls):
         cls.driver = Service.get_driver(search_stu_user_info)
@@ -69,11 +70,10 @@ class StudentInfoTest(unittest.TestCase):
                                                        'pagination-detail > span.pagination-info').text
         if '总共' in sum_text:
             sum_num = sum_text.split('总共 ')[1].split(' 条')[0]
-        else:
-            sum_num = 0
-        print(db_result,sum_num)
-        if db_result[0] == int(sum_num):
-            actual = 'test query student info pass'
+            if db_result[0] == int(sum_num):
+                actual = 'test query student info pass'
+            else:
+                actual = 'test query student info fail'
         else:
             actual = 'test query student info fail'
         cls.assertEqual(expect,actual)
