@@ -47,11 +47,10 @@ class WeekExamResultTest(unittest.TestCase):
                                                  ' span.pagination-info').text
         if '总共' in sum_text:
             sum_num = sum_text.split('总共 ')[1].split(' 条')[0]
-        else:
-            sum_num = 0
-        print(db_result,sum_num)
-        if db_result[0] == int(sum_num):
-            actual = 'test query week exam pass'
+            if db_result[0] == int(sum_num):
+                actual = 'test query week exam pass'
+            else:
+                actual = 'test query week exam fail'
         else:
             actual = 'test query week exam fail'
         self.assertEqual(expect,actual)

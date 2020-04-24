@@ -21,16 +21,15 @@ class ModifyPasswdTest(unittest.TestCase):
         Login(cls.driver).login(login_user_info)
         cls.modify_passwd = ModifyPassWord(cls.driver)
 
-
     @classmethod
     def tearDownClass(cls):
         cls.driver.quit()
 
-
     @parameterized.expand(modify_passwd_login_info)
     def test_a_modify_login_passwd(self,old,new1,new2,expect):
         self.modify_passwd.do_modify_login_passwd(old,new1,new2)
-        sql = f'update system_user set pwd="B5B1C07C180FEFC77671906F382488F2" where name="WNCD005"'
+        username = login_user_info['username']
+        sql = f'update system_user set pwd="B5B1C07C180FEFC77671906F382488F2" where name="{username}"'
         if '修改成功' in self.driver.find_element_by_css_selector(
                 '#panel-password-success>div.modal-body.modal-warning>div>h4').text:
             actual = 'login: modify password pass'

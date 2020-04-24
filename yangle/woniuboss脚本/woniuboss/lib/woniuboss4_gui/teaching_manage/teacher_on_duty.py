@@ -49,17 +49,16 @@ class TeacherOnDuty:
         return ele_text
 
     def click_refer_to_duty(self):
-        self.driver.find_element_by_css_selector('#queryAera > div > button.btn.btn-primary.'
-                                                 'btn-padding.pull-right').click()
+        self.driver.find_element_by_xpath('//*[@id="queryAera"]/div/button[2]').click()
 
     def select_who_on_duty(self,who):
+        Service.wait_until_element_is_visible(self.driver,By.CSS_SELECTOR,'#addDuty-table > tr > td:nth-child(1) > '
+                                                                          'select')
         Service.box_css_click(self.driver,'#addDuty-table > tr > td:nth-child(1) > select',who)
 
     def input_duty_date(self,date):
         js1 = f'document.querySelector("#addDuty-table > tr > td:nth-child(2) > input").value="{date}";'
-        js2 = 'document.querySelector("body > div:nth-child(29) > div.datetimepicker-days").style="display: none;"'
-        js3 = 'document.querySelector("body > div:nth-child(29)").style = "display: none;"'
-        self.driver.execute_script(js2)
+        js3 = 'document.querySelector("body > div:nth-child(26)").style = "display: none;"'
         self.driver.execute_script(js3)
         self.driver.execute_script(js1)
 
@@ -69,11 +68,12 @@ class TeacherOnDuty:
     def do_refer_to_duty(self,who,date):
         self.click_teaching_manage_link()
         self.click_teacher_duty_link()
+        self.click_refer_to_duty()
         self.select_who_on_duty(who)
         self.input_duty_date(date)
         self.click_save_btn()
-        time.sleep(2)
-        #body > div.bootbox.modal.fade.mydialog.in > div > div > div.modal-body > div 新增值班成功
+        Service.wait_until_element_is_visible(self.driver,By.CSS_SELECTOR,'body > div.bootbox.modal.fade.mydialog.in > '
+                                                                          'div > div > div.modal-body > div')
 
     def click_logs_btn(self):
         self.driver.find_element_by_css_selector('#duty_table > tbody > tr:nth-child(1) > td:nth-child(10) '
@@ -81,17 +81,13 @@ class TeacherOnDuty:
 
     def input_start_time(self,s_time):
         js1 = f'document.querySelector("#log-form > div:nth-child(7) > div:nth-child(1) > input").value="{s_time}";'
-        js2 = 'document.querySelector("body > div:nth-child(23) > div.datetimepicker-hours").style="display: none;"'
         js3 = 'document.querySelector("body > div:nth-child(23)").style = "display: none;"'
-        self.driver.execute_script(js2)
         self.driver.execute_script(js3)
         self.driver.execute_script(js1)
 
     def input_end_time(self,e_time):
         js1 = f'document.querySelector("#log-form > div:nth-child(7) > div:nth-child(2) > input").value="{e_time}";'
-        js2 = 'document.querySelector("body > div:nth-child(24) > div.datetimepicker-hours").style="display: none;"'
         js3 = 'document.querySelector("body > div:nth-child(24)").style = "display: none;"'
-        self.driver.execute_script(js2)
         self.driver.execute_script(js3)
         self.driver.execute_script(js1)
 
@@ -150,4 +146,3 @@ class TeacherOnDuty:
         self.input_modify_date(date)
         self.click_modify_save_btn()
         time.sleep(2)
-        #body > div.bootbox.modal.fade.mydialog.in > div > div > div.modal-body > div  修改成功

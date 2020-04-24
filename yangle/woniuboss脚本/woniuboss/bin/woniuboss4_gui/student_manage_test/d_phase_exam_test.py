@@ -54,7 +54,7 @@ class PhaseExamTest(unittest.TestCase):
             print(float(db_result[0][0]))
             print(float(phase1_score))
             if num == 1:
-                if int(db_result[0][0]) == int(phase1_score):
+                if float(db_result[0][0]) == float(phase1_score):
                     actual = 'test import sigle phase exam pass'
                 else:
                     actual = 'test import sigle phase exam fail'

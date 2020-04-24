@@ -31,7 +31,7 @@ class TeacherDutyTest(unittest.TestCase):
     @parameterized.expand(query_teacher_duty_info)
     def test_a_query_duty_info(self,status,id,s_time,e_time,expect):
         sum_text = self.teacher_duty.do_query_duty_info(status,id,s_time,e_time)
-        print(sum_text)
+        # sum_num = sum_text.split('总共 ')[1].split(' 条')[0]
         if '总共' in sum_text:
             actual = 'query teacher duty pass'
         else:
