@@ -101,7 +101,7 @@ class PersonnelManagementTest(unittest.TestCase):
         PersonnelManagement(cls.driver).pm_area_query(region)
 
         actual = Service.text_css(cls.driver, '#employee-table > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(5)')
-        # WNCD004
+
         cls.assertEqual(actual, expect)
         cls.driver.refresh()
 
@@ -111,7 +111,7 @@ class PersonnelManagementTest(unittest.TestCase):
         PersonnelManagement(cls.driver).pm_department_query(region, department)
 
         actual = Service.text_css(cls.driver, '#employee-table > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(5)')
-        # WNCD004
+
         cls.assertEqual(actual, expect)
         cls.driver.refresh()
 
@@ -121,7 +121,7 @@ class PersonnelManagementTest(unittest.TestCase):
         PersonnelManagement(cls.driver).pm_state_query(region, department, state)
 
         actual = Service.text_css(cls.driver, '#employee-table > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(5)')
-        # WNCD004
+
         cls.assertEqual(actual, expect)
         cls.driver.refresh()
 
@@ -131,7 +131,7 @@ class PersonnelManagementTest(unittest.TestCase):
         PersonnelManagement(cls.driver).pm_name_input_query(uname)
 
         actual = Service.text_css(cls.driver, '#employee-table > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(5)')
-        # WNCD004
+
         cls.assertEqual(actual, expect)
         cls.driver.refresh()
 

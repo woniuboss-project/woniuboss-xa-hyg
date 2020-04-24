@@ -12,7 +12,15 @@ import unittest
 import xlrd
 class Service:
 
-    # 元素内容text
+    # 弹窗处理
+    @classmethod
+    def alert_windows(cls, driver):
+        # 从页面切换至windows弹出窗口
+        alert = driver.switch_to.alert()
+        # 确定
+        alert.accept()
+
+        # 元素内容text
     @classmethod
     def text_css(cls, driver, text_css):
         text_css = driver.find_element_by_css(text_css).text

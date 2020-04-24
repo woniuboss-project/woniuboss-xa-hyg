@@ -11,8 +11,21 @@ from woniuboss.tools.woniuboss_gui.service import Service
 test_config_info=Utility.get_json('..\\..\\conf\\woniuboss_gui\\FM\\testdata.conf')
 fm_financial_info = Utility.get_excel_to_tuple(test_config_info[0])
 fm_financial_user_info = Utility.get_excel_to_user(test_config_info[0])
-fm_accounts_info = Utility.get_excel_to_tuple(test_config_info[1])
-fm_students_info = Utility.get_excel_to_tuple(test_config_info[2])
+fm_1_subject_info = Utility.get_excel_to_tuple(test_config_info[1])
+fm_2_subject_info = Utility.get_excel_to_tuple(test_config_info[2])
+fm_financial_query_info = Utility.get_excel_to_tuple(test_config_info[3])
+fm_last_month_query_info = Utility.get_excel_to_tuple(test_config_info[4])
+fm_month_query_info = Utility.get_excel_to_tuple(test_config_info[5])
+fm_new_water_info = Utility.get_excel_to_tuple(test_config_info[6])
+fm_modify_water_info = Utility.get_excel_to_tuple(test_config_info[7])
+fm_accounts_info = Utility.get_excel_to_tuple(test_config_info[8])
+fm_students_info = Utility.get_excel_to_tuple(test_config_info[9])
+fm_search_info = Utility.get_excel_to_tuple(test_config_info[10])
+ffm_state_query_info = Utility.get_excel_to_tuple(test_config_info[11])
+fm_name_query_info = Utility.get_excel_to_tuple(test_config_info[12])
+fm_payment_refund_info = Utility.get_excel_to_tuple(test_config_info[13])
+
+
 
 
 # ('http://192.168.75.128:8080/WoniuBoss2.5/user/login', 'POST',
@@ -28,7 +41,7 @@ class FinancialManagementTest(unittest.TestCase):
 		cls.driver = Service.get_driver(fm_financial_user_info)
 		Service.login_account(cls, fm_financial_user_info)
 		Service.click_text(cls.driver, '财务管理')
-
+		Service.decryption(cls.driver)
 
 	@classmethod
 	def tearDownClass(cls):
@@ -46,6 +59,99 @@ class FinancialManagementTest(unittest.TestCase):
 			actual = 'FM_failed'
 			cls.driver.refresh()
 		cls.assertEqual(actual, expect)
+
+	# 一级科目
+	@parameterized.expand(fm_1_subject_info)
+	def test_fm_1_subject(cls, data, expect):
+		test_fm_1_subject= FinancialManagement(cls.driver).fm_1_subject()
+
+		if '主营业务收入' in test_fm_1_subject:
+			actual = 'FM_correct'
+		else:
+			actual = 'FM_failed'
+			cls.driver.refresh()
+		cls.assertEqual(actual, expect)
+
+	# 二级科目
+	@parameterized.expand(fm_2_subject_info)
+	def test_fm_2_subject(cls, data, expect):
+		test_fm_2_subject= FinancialManagement(cls.driver).fm_2_subject()
+
+		if '就业培训' in test_fm_2_subject:
+			actual = 'FM_correct'
+		else:
+			actual = 'FM_failed'
+			cls.driver.refresh()
+		cls.assertEqual(actual, expect)
+
+	# 查询
+
+	# 查询工作流
+	@parameterized.expand(fm_financial_query_info)
+	def test_fm_financial_query(cls, fm_start_time, fm_end_time, one_subject, two_subject, expect):
+		FinancialManagement(cls.driver).fm_financial_query(fm_start_time, fm_end_time, one_subject, two_subject)
+
+		actual = Service.text_css(cls.driver, '#public-pool-table > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(11)')
+		cls.assertEqual(actual, expect)
+		cls.driver.refresh()
+
+	# 上月查询
+	@parameterized.expand(fm_last_month_query_info)
+	def test_fm_last_month_query(cls, data, expect):
+		FinancialManagement(cls.driver).fm_last_month_query()
+
+		actual = Service.text_css(cls.driver, '.no-records-found > td:nth-child(1)')
+		cls.assertEqual(actual, expect)
+		cls.driver.refresh()
+
+	# 本月查询
+	@parameterized.expand(fm_month_query_info)
+	def test_fm_month_query(cls, data, expect):
+		FinancialManagement(cls.driver).fm_month_query()
+
+		actual = Service.text_css(cls.driver, '#public-pool-table > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(11)')
+		cls.assertEqual(actual, expect)
+		cls.driver.refresh()
+
+	# 新增流水工作流
+
+	@parameterized.expand(fm_new_water_info)
+	def test_fm_new_water(cls, one_subject, two_subject, fm_type, settlement, fm_trading_time, head, payment,
+					 fm_amount, trading, fm_other_trading, fm_capital_uses, expect):
+		FinancialManagement(cls.driver).fm_new_water(one_subject, two_subject, fm_type, settlement, fm_trading_time, head, payment,
+					 fm_amount, trading, fm_other_trading, fm_capital_uses)
+		capital_uses = f"'{fm_capital_uses}'"
+
+		sql = f'SELECT first_subject_id FROM detailed_dealings WHERE comm = {capital_uses} ;'
+		fm_new_water = Utility.query_one(fm_financial_user_info, sql)
+		fm_results = fm_new_water[0]
+		if fm_results == one_subject:
+			actual = 'FM_correct'
+		else:
+			actual = 'FM_failed'
+			cls.driver.refresh()
+		cls.assertEqual(actual, expect)
+		cls.driver.refresh()
+
+	# 修改工作流
+
+	@parameterized.expand(fm_modify_water_info)
+	def test_fm_modify_water(cls, one_subject, two_subject, fm_type, settlement, fm_trading_time, head, payment,
+					 fm_amount, trading, fm_other_trading, fm_capital_uses, expect):
+		FinancialManagement(cls.driver).fm_new_water(one_subject, two_subject, fm_type, settlement, fm_trading_time, head, payment,
+					 fm_amount, trading, fm_other_trading, fm_capital_uses)
+		capital_uses = f"'{fm_capital_uses}'"
+
+		sql = f'SELECT first_subject_id FROM detailed_dealings WHERE comm = {capital_uses} ;'
+		fm_modify_water = Utility.query_one(fm_financial_user_info, sql)
+		fm_results = fm_modify_water[0]
+		if fm_results == one_subject:
+			actual = 'FM_correct'
+		else:
+			actual = 'FM_failed'
+			cls.driver.refresh()
+		cls.assertEqual(actual, expect)
+		cls.driver.refresh()
 
 	# 公账导入
 	# 界面
@@ -70,6 +176,55 @@ class FinancialManagementTest(unittest.TestCase):
 			actual = 'FM_failed'
 			cls.driver.refresh()
 		cls.assertEqual(actual, expect)
+
+	# 搜索状态下拉框
+	@parameterized.expand(fm_search_info)
+	def test_fm_search(cls, data, expect):
+		test_fm_search= FinancialManagement(cls.driver).fm_search()
+
+		if '待缴费' in test_fm_search:
+			actual = 'FM_correct'
+		else:
+			actual = 'FM_failed'
+			cls.driver.refresh()
+		cls.assertEqual(actual, expect)
+
+	# 查询
+
+	# 状态查询
+
+	@parameterized.expand(ffm_state_query_info)
+	def test_fm_state_query(cls, fm_state, expect):
+		FinancialManagement(cls.driver).fm_state_query(fm_state)
+
+		actual = Service.text_css(cls.driver, '#nopayStudent-table > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(2)')
+		cls.assertEqual(actual, expect)
+		cls.driver.refresh()
+
+	# 姓名查询
+	@parameterized.expand(fm_name_query_info)
+	def test_fm_name_query(cls, fm_name, expect):
+		FinancialManagement(cls.driver).fm_name_query(fm_name)
+
+		actual = Service.text_css(cls.driver, '#nopayStudent-table > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(2)')
+		cls.assertEqual(actual, expect)
+		cls.driver.refresh()
+
+	# 缴费退费工作流
+
+	@parameterized.expand(fm_payment_refund_info)
+	def test_fm_payment_refund(cls, student_class, stustatus, fm_stupay_amount, select, payment_account, fm_added, expect):
+		FinancialManagement(cls.driver).fm_payment_refund(student_class, stustatus, fm_stupay_amount, select, payment_account, fm_added)
+
+		actual = Service.text_css(cls.driver, '#nopayStudent-table > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(7)')
+		if actual == stustatus:
+			actual = 'FM_correct'
+		else:
+			actual = 'FM_failed'
+			cls.driver.refresh()
+		cls.assertEqual(actual, expect)
+		cls.driver.refresh()
+
 
 
 if __name__ == '__main__':
