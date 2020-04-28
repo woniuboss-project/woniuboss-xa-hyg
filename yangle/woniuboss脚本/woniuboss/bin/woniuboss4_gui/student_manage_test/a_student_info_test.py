@@ -8,7 +8,7 @@ import unittest
 from woniuboss.tools.woniuboss_gui.utility import Utility
 from parameterized import parameterized
 
-test_config_info=Utility.get_json('..\\..\\..\\conf\\woniuboss4_gui\\stu_manage.conf')
+test_config_info=Utility.get_json('..\\..\\conf\\woniuboss4_gui\\stu_manage.conf')
 search_stu_info = Utility.get_excel_to_tuple(test_config_info[0])
 search_stu_user_info = Utility.get_excel_to_user(test_config_info[0])
 

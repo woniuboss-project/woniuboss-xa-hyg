@@ -1,13 +1,12 @@
 from parameterized import parameterized
 from selenium.webdriver.common.by import By
-
 from woniuboss.lib.woniuboss4_gui.login.decrypt import Decrypt
-
+from woniuboss.lib.woniuboss4_gui.login.login import Login
 from woniuboss.tools.woniuboss_gui.service import Service
 from woniuboss.tools.woniuboss_gui.utility import Utility
 import unittest
 
-test_config_info=Utility.get_json('..\\..\\..\\conf\\woniuboss4_gui\\login.conf')
+test_config_info=Utility.get_json('..\\..\\conf\\woniuboss4_gui\\login.conf')
 decrypt_info = Utility.get_excel_to_tuple(test_config_info[3])
 decrypt_user_info = Utility.get_excel_to_user(test_config_info[3])
 
@@ -15,8 +14,8 @@ class DecryptTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.driver = Service.get_driver(decrypt_user_info)
+        Login(cls.driver).login(decrypt_user_info)
         cls.decrypt = Decrypt(cls.driver)
-        Service.miss_login(cls.driver,decrypt_user_info)
 
     @classmethod
     def tearDownClass(cls):

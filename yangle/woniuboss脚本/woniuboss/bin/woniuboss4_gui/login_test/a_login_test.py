@@ -5,7 +5,7 @@ from woniuboss.tools.woniuboss_gui.service import Service
 from woniuboss.tools.woniuboss_gui.utility import Utility
 import unittest
 
-test_config_info=Utility.get_json('..\\..\\..\\conf\\woniuboss4_gui\\login.conf')
+test_config_info=Utility.get_json('..\\..\\conf\\woniuboss4_gui\\login.conf')
 
 login_info=Utility.get_excel_to_tuple(test_config_info[0])
 add_user_info = Utility.get_excel_to_user(test_config_info[0])
