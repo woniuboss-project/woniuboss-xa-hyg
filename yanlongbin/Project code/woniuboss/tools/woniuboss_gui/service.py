@@ -24,6 +24,13 @@ class Service:
     @classmethod
     def text_css(cls, driver, text_css):
         text_css = driver.find_element_by_css(text_css).text
+        return text_css
+
+        # 元素内容xpath
+    @classmethod
+    def text_xpath(cls, driver, text_xpath):
+        text_css = driver.find_element_by_xpath(text_xpath).text
+        return text_css
 
     # 下拉框内容获取
     @classmethod
@@ -61,7 +68,7 @@ class Service:
             click = driver.find_element_by_xpath('/html/body/div[6]/div/div/div[2]/input')
 
             cls.send_input(click, 'woniu123')
-            cls.click_text(driver, '确定')
+            cls.click_xpath(driver, '/html/body/div[6]/div/div/div[3]/button')
         except Exception as e:
             print('解密失败')
 
@@ -143,7 +150,7 @@ class Service:
     def box_id_click(cls, driver,location,content):
         # 导入select工具，它专用于处理页面上的下拉框，通过传入下拉框里的值进行操作
         from selenium.webdriver.support.select import Select
-        Select(driver.find_element_id_xpath(location)).select_by_visible_text(content)
+        Select(driver.find_element_by_id(location)).select_by_visible_text(content)
 
     @classmethod
     def box_css_click(cls, driver,location,content):

@@ -47,13 +47,19 @@ class AdministrativeManagementTest(unittest.TestCase):
     # 界面
     @parameterized.expand(am_management_info)
     def test_am_management(cls, data,expect):
-        AdministrativeManagement(cls.driver).am_management_interface()
-        if Service.is_element_present(cls.driver, By.LINK_TEXT, '固定资产管理'):
-            actual = 'AM_correct'
-        else:
+
+        try:
+            AdministrativeManagement(cls.driver).am_management_interface()
+            if Service.is_element_present(cls.driver, By.LINK_TEXT, '固定资产管理'):
+                actual = 'AM_correct'
+            else:
+                actual = 'AM_failed'
+                cls.driver.refresh()
+                cls.assertEqual(actual, expect)
+        except Exception as e:
             actual = 'AM_failed'
             cls.driver.refresh()
-        cls.assertEqual(actual, expect)
+            cls.assertEqual(actual, expect)
 
 
 
@@ -62,13 +68,18 @@ class AdministrativeManagementTest(unittest.TestCase):
     # 界面
     @parameterized.expand(am_recipients_info)
     def test_am_recipients(cls, data,expect):
-        AdministrativeManagement(cls.driver).am_recipients_interface()
-        if Service.is_element_present(cls.driver, By.LINK_TEXT, '固定资产领用登记'):
-            actual = 'AM_correct'
-        else:
+        try:
+            AdministrativeManagement(cls.driver).am_recipients_interface()
+            if Service.is_element_present(cls.driver, By.LINK_TEXT, '固定资产领用登记'):
+                actual = 'AM_correct'
+            else:
+                actual = 'AM_failed'
+                cls.driver.refresh()
+            cls.assertEqual(actual, expect)
+        except Exception as e:
             actual = 'AM_failed'
             cls.driver.refresh()
-        cls.assertEqual(actual, expect)
+            cls.assertEqual(actual, expect)
 
 
     # 固定资产归还模块
@@ -76,13 +87,18 @@ class AdministrativeManagementTest(unittest.TestCase):
     # 界面
     @parameterized.expand(am_return_info)
     def test_am_return(cls, data,expect):
-        AdministrativeManagement(cls.driver).am_return_interface()
-        if Service.is_element_present(cls.driver, By.LINK_TEXT, '固定资产归还'):
-            actual = 'AM_correct'
-        else:
+        try:
+            AdministrativeManagement(cls.driver).am_return_interface()
+            if Service.is_element_present(cls.driver, By.LINK_TEXT, '固定资产归还'):
+                actual = 'AM_correct'
+            else:
+                actual = 'AM_failed'
+                cls.driver.refresh()
+            cls.assertEqual(actual, expect)
+        except Exception as e:
             actual = 'AM_failed'
             cls.driver.refresh()
-        cls.assertEqual(actual, expect)
+            cls.assertEqual(actual, expect)
 
 
 

@@ -9,7 +9,6 @@ class Driven:
 		loader = unittest.TestLoader()
 		from woniuboss.tools.woniuboss_gui.utility import Utility
 		testcase_names = Utility.trans_str('..\\..\\conf\\woniuboss_gui\\perform.conf')
-
 		tests = loader.loadTestsFromNames(testcase_names)
 		ts.addTests(tests)
 		# 测试报告文件名称的格式为：xxxx-xx-xx_xx_xx_xx_report.html

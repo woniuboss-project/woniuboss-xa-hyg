@@ -17,7 +17,8 @@ class EmploymentManagement:
 
 	# 技术面试下拉框
 	def em_technology(self):
-		Service.box_content_id(self.driver, 'studentSelect')
+		em_technology = Service.box_content_id(self.driver, 'studentSelect')
+		return em_technology
 
 	# 技术面试查询
 	def em_technology_query(self, technology):
@@ -56,25 +57,25 @@ class EmploymentManagement:
 
 	# 班级下拉框
 	def em_class(self):
-		Service.box_content_id(self.driver, 'semesterSelect')
-
+		em_class = Service.box_content_id(self.driver, 'semesterSelect')
+		return em_class
 	# 方向下拉框
 	def em_direction(self):
-		Service.box_content_id(self.driver, 'stu-orientation')
-
+		box = Service.box_content_id(self.driver, 'stu-orientation')
+		return box
 	# 姓名输入框
 	def em_name_input(self, em_name):
-		name_input = self.driver.find_element_by_css('input.sel-text')
+		name_input = self.driver.find_element_by_xpath('/html/body/div[7]/div[3]/div/div/div/div[2]/div[2]/input[1]')
 		Service.send_input(name_input, em_name)
 
 	# 学号
 	def em_student_id_input(self, em_student_id):
-		student_id = self.driver.find_element_by_css('.col-lg-8 > input:nth-child(2)')
+		student_id = self.driver.find_element_by_xpath('/html/body/div[7]/div[3]/div/div/div/div[2]/div[2]/input[2]')
 		Service.send_input(student_id, em_student_id)
 
 	# 搜索
 	def em_search(self):
-		Service.click_css(self.driver, 'button.btn:nth-child(3)')
+		Service.click_xpath(self.driver, '/html/body/div[7]/div[3]/div/div/div/div[2]/div[2]/button')
 
 	# 查询
 
@@ -88,13 +89,13 @@ class EmploymentManagement:
 
 	# 姓名查询
 	def em_name_query(self, em_name):
-		name_input = self.driver.find_element_by_css('input.sel-text')
+		name_input = self.driver.find_element_by_css('/html/body/div[7]/div[3]/div/div/div/div[2]/div[2]/input[1]')
 		Service.send_input(name_input, em_name)
 		self.em_search()
 
 	# 学号查询
 	def em_student_id_query(self, em_student_id):
-		student_id = self.driver.find_element_by_css('.col-lg-8 > input:nth-child(2)')
+		student_id = self.driver.find_element_by_css('/html/body/div[7]/div[3]/div/div/div/div[2]/div[2]/input[2]')
 		Service.send_input(student_id, em_student_id)
 		self.em_search()
 
@@ -106,13 +107,13 @@ class EmploymentManagement:
 		self.driver.find_element_by_link_text('模拟面试').click()
 
 		# 期望薪资
-		xpected_salary = self.driver.find_element_by_css('.col-lg-8 > input:nth-child(2)')
+		xpected_salary = self.driver.find_element_by_id('msalary')
 		Service.send_input(xpected_salary, em_xpected_salary)
 		# 沟通能力
 		Service.box_id_click(self.driver, 'mcomm', mock_interviews)
 
 		# 备注
-		note = self.driver.find_element_by_css('.col-lg-8 > input:nth-child(2)')
+		note = self.driver.find_element_by_id('mremark')
 		Service.send_input(note, em_note)
 
 		# 保存
@@ -124,9 +125,10 @@ class EmploymentManagement:
 		self.driver.find_element_by_link_text('真实面试').click()
 
 		# 企业名称
-		Service.box_css_click(self.driver, '.form-group > div:nth-child(3) > button:nth-child(1) > span:nth-child(1)', enterprise)
+		Service.box_xpath_click(self.driver, '/html/body/div[9]/div/div/div[2]/div/div/div[2]/div/div[2]/form/div[1]/'
+											 'div/button/span[1]', enterprise)
 		# 面试岗位
-		Service.box_css_click(self.driver, '#form-real > div:nth-child(3) > select:nth-child(2)', jobs)
+		Service.box_xpath_click(self.driver, '/html/body/div[9]/div/div/div[2]/div/div/div[2]/div/div[2]/form/div[2]/select', jobs)
 
 		# 面试时间
 		interview_time = self.driver.find_element_by_id('reatime')
@@ -143,10 +145,10 @@ class EmploymentManagement:
 	def em_induction(self, enterprise, jobs, em_induction_time, em_induction_salary, em_interview_note):
 		self.driver.find_element_by_link_text('入职情况').click()
 		# 企业名称
-		Service.box_css_click(self.driver, '#form-jobRegi > div:nth-child(2) > '
-											 'div:nth-child(3) > button:nth-child(1) > span:nth-child(1)', enterprise)
+		Service.box_xpath_click(self.driver, '/html/body/div[9]/div/div/div[2]/div/div/div[2]/div/div[3]'
+											 '/form/div[1]/div[1]/button/span[1]', enterprise)
 		# 入职岗位
-		Service.box_css_click(self.driver, '#form-jobRegi > div:nth-child(3) > select:nth-child(2)', jobs)
+		Service.box_xpath_click(self.driver, '/html/body/div[9]/div/div/div[2]/div/div/div[2]/div/div[3]/form/div[2]/select', jobs)
 
 		# 入职时间
 		induction_time = self.driver.find_element_by_id('jdate')
@@ -177,7 +179,8 @@ class EmploymentManagement:
 		Service.click_id(self.driver, 'entry0')
 
 		# 提交
-		Service.click_css(self.driver, 'button.btn:nth-child(2)')
+		Service.click_css(self.driver, '/html/body/div[7]/div[3]/div/div/div/div[2]/div[3]/div[2]/div[2]/'
+									   'table/tbody/tr[1]/td[9]/button[2]')
 
 		# 确认弹窗
 

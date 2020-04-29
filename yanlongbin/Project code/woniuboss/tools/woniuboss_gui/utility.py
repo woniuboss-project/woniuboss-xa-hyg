@@ -122,9 +122,11 @@ class Utility:
         test_info = []
         # 按行读取每一条测试信息
         for i in range(xls_file_info['STARTROW'], xls_file_info['ENDROW']):
+
             # 读取单元格中的内容
             data = contents.cell(i, xls_file_info['DATACOL']).value
             # 读取期望结果列
+            # expect = contents.cell(i, xls_file_info['EXPECTCOL']).value
             expect = contents.cell(i, xls_file_info['EXPECTCOL']).value
             # 获取的是列表
             temp = data.split('\n')
@@ -174,6 +176,11 @@ class Utility:
         test_new_info = test_info[0]
         # 将结果返回
         return test_new_info
+
+if __name__ == '__main__':
+    test_config_info = Utility.get_json('..\\..\\conf\\woniuboss_api\\EM\\testdata.conf')
+    Utility.get_excel_to_tuple(test_config_info)
+
 
 
 

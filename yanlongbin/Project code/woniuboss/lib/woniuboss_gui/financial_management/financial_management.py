@@ -25,12 +25,13 @@ class FinancialManagement:
 
 	# 一级科目
 	def fm_1_subject(self):
-		Service.box_content_id(self.driver, '1_subject')
+		box = Service.box_content_id(self.driver, '1_subject')
+		return box
 
 	# 二级科目
 	def fm_2_subject(self):
-		Service.box_content_id(self.driver, '2_subject')
-
+		box = Service.box_content_id(self.driver, '2_subject')
+		return box
 	# 查询
 
 	# 查询工作流
@@ -51,11 +52,13 @@ class FinancialManagement:
 
 	# 上月查询
 	def fm_last_month_query(self):
-		Service.click_id(self.driver, 'electLastMonthAll')
+		box = Service.click_id(self.driver, 'electLastMonthAll')
+		return box
 
 	# 本月查询
 	def fm_month_query(self):
-		Service.click_id(self.driver, 'selectThisMonthAll')
+		box = Service.click_id(self.driver, 'selectThisMonthAll')
+		return box
 
 	# 新增流水工作流
 	def fm_new_water(self, one_subject, two_subject, fm_type, settlement, fm_trading_time, head, payment,
@@ -149,7 +152,8 @@ class FinancialManagement:
 
 	# 搜索状态下拉框
 	def fm_search(self):
-		Service.box_content_id(self.driver, 'selectNewStatus')
+		box = Service.box_content_id(self.driver, 'selectNewStatus')
+		return box
 
 	# 姓名搜索输入框
 	def fm_name_search(self, fm_name):
