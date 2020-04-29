@@ -25,7 +25,8 @@ class TodayAttendanceTest(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.driver.quit()
-
+    
+    #查询今日考勤
     @parameterized.expand(search_attendance_info)
     def test_a_search_attendance(cls,name,expect):
         cls.today_attendance.do_search_student(name)
@@ -37,7 +38,8 @@ class TodayAttendanceTest(unittest.TestCase):
             actual = 'test search attendance fail'
 
         cls.assertEqual(expect,actual)
-
+    
+    #操作单个考勤
     @parameterized.expand(attendance_one_info)
     def test_b_attendance_one(cls,status,expect):
         attr = cls.today_attendance.do_random_attandence(status)
@@ -52,7 +54,8 @@ class TodayAttendanceTest(unittest.TestCase):
         else:
             actual='test random attendance fail'
         cls.assertEqual(expect,actual)
-
+    
+    #批量考勤
     @parameterized.expand(attendance_all_info)
     def test_c_attendance_all(cls,kn,expect):
         cls.today_attendance.do_attendance_all()

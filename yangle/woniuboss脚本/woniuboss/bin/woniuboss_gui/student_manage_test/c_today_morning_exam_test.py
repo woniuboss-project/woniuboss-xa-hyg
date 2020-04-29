@@ -21,7 +21,8 @@ class TodayMorningExamTest(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.driver.quit()
-
+    
+    #今日晨考
     @parameterized.expand(today_morning_exam_info)
     def test_today_morning_exam(cls,method,score,question,expect):
         import time
