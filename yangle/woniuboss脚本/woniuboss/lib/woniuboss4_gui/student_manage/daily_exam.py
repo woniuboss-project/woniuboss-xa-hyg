@@ -26,6 +26,7 @@ class DailyExam:
     def do_click_homework_btn(self,level):
         self.click_student_manage_link()
         self.click_daily_exam_link()
+        time.sleep(5)
         self.select_homework_level(level)
         attr = self.click_work_btn()
         return attr
@@ -54,4 +55,4 @@ class DailyExam:
         self.click_all_work()
         self.driver.find_element_by_css_selector('body > div.bootbox.modal.fade.mydialog.in > div > div'
                                                  ' > div.modal-footer > button.btn.btn-primary').click()
-        time.sleep(3)
+        time.sleep(5)

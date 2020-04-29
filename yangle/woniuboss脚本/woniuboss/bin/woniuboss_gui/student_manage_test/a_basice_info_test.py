@@ -26,7 +26,8 @@ class BasicInfoTest(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.driver.quit()
-
+        
+    #查询学生信息
     @parameterized.expand(search_stu_info)
     def test_a_serach_stu_info(cls,class_name,orien_name,status_name,stu_name,stu_no,expect):
         cls.basic_info.do_search_student(class_name,orien_name,status_name,stu_name,stu_no)
@@ -37,7 +38,8 @@ class BasicInfoTest(unittest.TestCase):
         else:
             actual = 'test query stu_info fail'
         cls.assertEqual(expect,actual)
-
+    
+    #修改学生信息
     @parameterized.expand(modify_stu_info)
     def test_b_modify_stu_info(cls,name,stu_no,stu_tel,stu_mail,stu_qq,school,major,id_num,age,pacture_path,expect):
         cls.basic_info.do_modify_stu_info(name,stu_no,stu_tel,stu_mail,stu_qq,school,major,id_num,age,pacture_path)

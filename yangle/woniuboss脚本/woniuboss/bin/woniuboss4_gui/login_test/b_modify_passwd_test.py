@@ -8,7 +8,7 @@ from woniuboss.tools.woniuboss_gui.service import Service
 from woniuboss.tools.woniuboss_gui.utility import Utility
 import unittest
 from parameterized import parameterized
-test_config_info=Utility.get_json('..\\..\\..\\conf\\woniuboss4_gui\\login.conf')
+test_config_info=Utility.get_json('..\\..\\conf\\woniuboss4_gui\\login.conf')
 modify_passwd_login_info=Utility.get_excel_to_tuple(test_config_info[1])
 login_user_info = Utility.get_excel_to_user(test_config_info[1])
 modify_passwd_second_info=Utility.get_excel_to_tuple(test_config_info[2])
@@ -61,7 +61,8 @@ class ModifyPasswdTest(unittest.TestCase):
     @parameterized.expand(modify_passwd_second_info)
     def test_b_modify_second_passwd(self,old,new1,new2,expect):
         self.modify_passwd.do_modify_second_passwd(old,new1,new2)
-        sql = f'update system_user set pwd2="B5B1C07C180FEFC77671906F382488F2" where name="WNCD005"'
+        username = login_user_info['username']
+        sql = f'update system_user set pwd2="B5B1C07C180FEFC77671906F382488F2" where name="{username}"'
         if '修改成功' in self.driver.find_element_by_css_selector(
                 '#panel-password-success>div.modal-body.modal-warning>div>h4').text:
             actual = 'second: modify password pass'

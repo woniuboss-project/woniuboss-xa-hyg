@@ -8,7 +8,7 @@ import unittest
 from woniuboss.tools.woniuboss_gui.utility import Utility
 from parameterized import parameterized
 
-test_config_info=Utility.get_json('..\\..\\..\\conf\\woniuboss4_gui\\teaching_manage.conf')
+test_config_info=Utility.get_json('..\\..\\conf\\woniuboss4_gui\\teaching_manage.conf')
 query_overtime_summary_info = Utility.get_excel_to_tuple(test_config_info[13])
 user_info = Utility.get_excel_to_user(test_config_info[13])
 class OverTimeSummaryTest(unittest.TestCase):
