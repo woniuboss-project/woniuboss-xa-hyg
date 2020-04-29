@@ -1,0 +1,2992 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Unit Test Report</title>
+    <meta name="generator" content="HTMLTestRunner 0.8.2"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    
+<style type="text/css" media="screen">
+body        { font-family: verdana, arial, helvetica, sans-serif; font-size: 80%; }
+table       { font-size: 100%; }
+pre         { }
+
+/* -- heading ---------------------------------------------------------------------- */
+h1 {
+	font-size: 16pt;
+	color: gray;
+}
+.heading {
+    margin-top: 0ex;
+    margin-bottom: 1ex;
+}
+
+.heading .attribute {
+    margin-top: 1ex;
+    margin-bottom: 0;
+}
+
+.heading .description {
+    margin-top: 4ex;
+    margin-bottom: 6ex;
+}
+
+/* -- css div popup ------------------------------------------------------------------------ */
+a.popup_link {
+}
+
+a.popup_link:hover {
+    color: red;
+}
+
+.popup_window {
+    display: none;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    /*border: solid #627173 1px; */
+    padding: 10px;
+    background-color: #E6E6D6;
+    font-family: "Lucida Console", "Courier New", Courier, monospace;
+    text-align: left;
+    font-size: 8pt;
+    width: 500px;
+}
+
+}
+/* -- report ------------------------------------------------------------------------ */
+#show_detail_line {
+    margin-top: 3ex;
+    margin-bottom: 1ex;
+}
+#result_table {
+    width: 80%;
+    border-collapse: collapse;
+    border: 1px solid #777;
+}
+#header_row {
+    font-weight: bold;
+    color: white;
+    background-color: #777;
+}
+#result_table td {
+    border: 1px solid #777;
+    padding: 2px;
+}
+#total_row  { font-weight: bold; }
+.passClass  { background-color: #6c6; }
+.failClass  { background-color: #c60; }
+.errorClass { background-color: #c00; }
+.passCase   { color: #6c6; }
+.failCase   { color: #c60; font-weight: bold; }
+.errorCase  { color: #c00; font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+
+
+/* -- ending ---------------------------------------------------------------------- */
+#ending {
+}
+
+</style>
+
+</head>
+<body>
+<script language="javascript" type="text/javascript"><!--
+output_list = Array();
+
+/* level - 0:Summary; 1:Failed; 2:All */
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (id.substr(0,2) == 'ft') {
+            if (level < 1) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+        if (id.substr(0,2) == 'pt') {
+            if (level > 1) {
+                tr.className = '';
+            }
+            else {
+                tr.className = 'hiddenRow';
+            }
+        }
+    }
+}
+
+
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        tid0 = 't' + cid.substr(1) + '.' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        if (toHide) {
+            document.getElementById('div_'+tid).style.display = 'none'
+            document.getElementById(tid).className = 'hiddenRow';
+        }
+        else {
+            document.getElementById(tid).className = '';
+        }
+    }
+}
+
+
+function showTestDetail(div_id){
+    var details_div = document.getElementById(div_id)
+    var displayState = details_div.style.display
+    // alert(displayState)
+    if (displayState != 'block' ) {
+        displayState = 'block'
+        details_div.style.display = 'block'
+    }
+    else {
+        details_div.style.display = 'none'
+    }
+}
+
+
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+
+/* obsoleted by detail in <div>
+function showOutput(id, name) {
+    var w = window.open("", //url
+                    name,
+                    "resizable,scrollbars,status,width=800,height=450");
+    d = w.document;
+    d.write("<pre>");
+    d.write(html_escape(output_list[id]));
+    d.write("\n");
+    d.write("<a href='javascript:window.close()'>close</a>\n");
+    d.write("</pre>\n");
+    d.close();
+}
+*/
+--></script>
+
+<div class='heading'>
+<h1>Unit Test Report</h1>
+<p class='attribute'><strong>Start Time:</strong> 2020-04-29 15:20:43</p>
+<p class='attribute'><strong>Duration:</strong> 0:09:47.345468</p>
+<p class='attribute'><strong>Status:</strong> Pass 17 Failure 28 Error 14</p>
+
+<p class='description'></p>
+</div>
+
+
+
+<p id='show_detail_line'>Show
+<a href='javascript:showCase(0)'>Summary</a>
+<a href='javascript:showCase(1)'>Failed</a>
+<a href='javascript:showCase(2)'>All</a>
+</p>
+<table id='result_table'>
+<colgroup>
+<col align='left' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+</colgroup>
+<tr id='header_row'>
+    <td>Test Group/Test case</td>
+    <td>Count</td>
+    <td>Pass</td>
+    <td>Fail</td>
+    <td>Error</td>
+    <td>View</td>
+</tr>
+
+<tr class='passClass'>
+    <td>woniuboss.bin.woniuboss_gui.login_test.a_login_test.LoginTest</td>
+    <td>4</td>
+    <td>4</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c1',4)">Detail</a></td>
+</tr>
+
+<tr id='pt1.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>testLogin_0_WNCD000</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>testLogin_1_WNCD856</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>testLogin_2_WNCD000</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>testLogin_3_WNCD000</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='errorClass'>
+    <td>woniuboss.bin.woniuboss_gui.login_test.b_modify_passwd_test.ModifyPasswdTest</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td>2</td>
+    <td><a href="javascript:showClassDetail('c2',2)">Detail</a></td>
+</tr>
+
+<tr id='ft2.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_a_modify_login_pd</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft2.1')" >
+        error</a>
+
+    <div id='div_ft2.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft2.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft2.1: Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\login_test\b_modify_passwd_test.py", line 31, in test_a_modify_login_pd
+    cls.modify_passwd.modify_login_pqsswd(old,new1,new2)
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\modify_password.py", line 55, in modify_login_pqsswd
+    self.click_modify_passwd_button()
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\modify_password.py", line 8, in click_modify_passwd_button
+    self.driver.find_element_by_css_selector("div[class='navbar navbar-default']&gt;"
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 598, in find_element_by_css_selector
+    return self.find_element(by=By.CSS_SELECTOR, value=css_selector)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":"div[class='navbar navbar-default']&gt;div:nth-child(2)&gt;ul&gt;li:nth-child(1)"}
+  (Session info: chrome=74.0.3729.108)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.18363 x86_64)
+
+Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\login_test\b_modify_passwd_test.py", line 31, in test_a_modify_login_pd
+    cls.modify_passwd.modify_login_pqsswd(old,new1,new2)
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\modify_password.py", line 55, in modify_login_pqsswd
+    self.click_modify_passwd_button()
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\modify_password.py", line 8, in click_modify_passwd_button
+    self.driver.find_element_by_css_selector("div[class='navbar navbar-default']&gt;"
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 598, in find_element_by_css_selector
+    return self.find_element(by=By.CSS_SELECTOR, value=css_selector)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":"div[class='navbar navbar-default']&gt;div:nth-child(2)&gt;ul&gt;li:nth-child(1)"}
+  (Session info: chrome=74.0.3729.108)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.18363 x86_64)
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft2.2' class='none'>
+    <td class='errorCase'><div class='testcase'>test_b_modify_second_pd</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft2.2')" >
+        error</a>
+
+    <div id='div_ft2.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft2.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft2.2: Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\login_test\b_modify_passwd_test.py", line 69, in test_b_modify_second_pd
+    cls.modify_passwd.modify_2st_passwd(old,new1,new2)
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\modify_password.py", line 45, in modify_2st_passwd
+    self.click_modify_passwd_button()
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\modify_password.py", line 8, in click_modify_passwd_button
+    self.driver.find_element_by_css_selector("div[class='navbar navbar-default']&gt;"
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 598, in find_element_by_css_selector
+    return self.find_element(by=By.CSS_SELECTOR, value=css_selector)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":"div[class='navbar navbar-default']&gt;div:nth-child(2)&gt;ul&gt;li:nth-child(1)"}
+  (Session info: chrome=74.0.3729.108)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.18363 x86_64)
+
+Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\login_test\b_modify_passwd_test.py", line 69, in test_b_modify_second_pd
+    cls.modify_passwd.modify_2st_passwd(old,new1,new2)
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\modify_password.py", line 45, in modify_2st_passwd
+    self.click_modify_passwd_button()
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\modify_password.py", line 8, in click_modify_passwd_button
+    self.driver.find_element_by_css_selector("div[class='navbar navbar-default']&gt;"
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 598, in find_element_by_css_selector
+    return self.find_element(by=By.CSS_SELECTOR, value=css_selector)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":"div[class='navbar navbar-default']&gt;div:nth-child(2)&gt;ul&gt;li:nth-child(1)"}
+  (Session info: chrome=74.0.3729.108)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.18363 x86_64)
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>woniuboss.bin.woniuboss_gui.login_test.c_decrypt_test.DecryptTest</td>
+    <td>3</td>
+    <td>0</td>
+    <td>0</td>
+    <td>3</td>
+    <td><a href="javascript:showClassDetail('c3',3)">Detail</a></td>
+</tr>
+
+<tr id='ft3.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_decrypt_0_</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.1')" >
+        error</a>
+
+    <div id='div_ft3.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.1: Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\login_test\c_decrypt_test.py", line 27, in test_decrypt
+    cls.decrypt.do_decrypt(second_pwd)
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\decrypt.py", line 17, in do_decrypt
+    self.click_decrypt_btn()
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\decrypt.py", line 7, in click_decrypt_btn
+    self.driver.find_element_by_id('btn-decrypt').click()
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 360, in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"id","selector":"btn-decrypt"}
+  (Session info: chrome=74.0.3729.108)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.18363 x86_64)
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\login_test\c_decrypt_test.py", line 27, in test_decrypt
+    cls.decrypt.do_decrypt(second_pwd)
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\decrypt.py", line 17, in do_decrypt
+    self.click_decrypt_btn()
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\decrypt.py", line 7, in click_decrypt_btn
+    self.driver.find_element_by_id('btn-decrypt').click()
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 360, in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"id","selector":"btn-decrypt"}
+  (Session info: chrome=74.0.3729.108)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.18363 x86_64)
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.2' class='none'>
+    <td class='errorCase'><div class='testcase'>test_decrypt_1_woniu124</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.2')" >
+        error</a>
+
+    <div id='div_ft3.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.2: Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\login_test\c_decrypt_test.py", line 27, in test_decrypt
+    cls.decrypt.do_decrypt(second_pwd)
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\decrypt.py", line 17, in do_decrypt
+    self.click_decrypt_btn()
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\decrypt.py", line 7, in click_decrypt_btn
+    self.driver.find_element_by_id('btn-decrypt').click()
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 360, in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"id","selector":"btn-decrypt"}
+  (Session info: chrome=74.0.3729.108)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.18363 x86_64)
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\login_test\c_decrypt_test.py", line 27, in test_decrypt
+    cls.decrypt.do_decrypt(second_pwd)
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\decrypt.py", line 17, in do_decrypt
+    self.click_decrypt_btn()
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\decrypt.py", line 7, in click_decrypt_btn
+    self.driver.find_element_by_id('btn-decrypt').click()
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 360, in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"id","selector":"btn-decrypt"}
+  (Session info: chrome=74.0.3729.108)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.18363 x86_64)
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.3' class='none'>
+    <td class='errorCase'><div class='testcase'>test_decrypt_2_woniu123</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.3')" >
+        error</a>
+
+    <div id='div_ft3.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.3: Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\login_test\c_decrypt_test.py", line 27, in test_decrypt
+    cls.decrypt.do_decrypt(second_pwd)
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\decrypt.py", line 17, in do_decrypt
+    self.click_decrypt_btn()
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\decrypt.py", line 7, in click_decrypt_btn
+    self.driver.find_element_by_id('btn-decrypt').click()
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 360, in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"id","selector":"btn-decrypt"}
+  (Session info: chrome=74.0.3729.108)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.18363 x86_64)
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\login_test\c_decrypt_test.py", line 27, in test_decrypt
+    cls.decrypt.do_decrypt(second_pwd)
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\decrypt.py", line 17, in do_decrypt
+    self.click_decrypt_btn()
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\decrypt.py", line 7, in click_decrypt_btn
+    self.driver.find_element_by_id('btn-decrypt').click()
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 360, in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"id","selector":"btn-decrypt"}
+  (Session info: chrome=74.0.3729.108)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.18363 x86_64)
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>unittest.suite._ErrorHolder</td>
+    <td>9</td>
+    <td>0</td>
+    <td>0</td>
+    <td>9</td>
+    <td><a href="javascript:showClassDetail('c4',9)">Detail</a></td>
+</tr>
+
+<tr id='ft4.1' class='none'>
+    <td class='errorCase'><div class='testcase'>BasicInfoTest)</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.1')" >
+        error</a>
+
+    <div id='div_ft4.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.1: Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 24, in setUpClass
+    Decrypt(cls.driver).do_decrypt(search_stu_user_info['secondpwd'])
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\decrypt.py", line 17, in do_decrypt
+    self.click_decrypt_btn()
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\decrypt.py", line 7, in click_decrypt_btn
+    self.driver.find_element_by_id('btn-decrypt').click()
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 360, in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"id","selector":"btn-decrypt"}
+  (Session info: chrome=74.0.3729.108)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.18363 x86_64)
+
+Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\student_manage_test\a_basice_info_test.py", line 24, in setUpClass
+    Decrypt(cls.driver).do_decrypt(search_stu_user_info['secondpwd'])
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\decrypt.py", line 17, in do_decrypt
+    self.click_decrypt_btn()
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\decrypt.py", line 7, in click_decrypt_btn
+    self.driver.find_element_by_id('btn-decrypt').click()
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 360, in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"id","selector":"btn-decrypt"}
+  (Session info: chrome=74.0.3729.108)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.18363 x86_64)
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft4.2' class='none'>
+    <td class='errorCase'><div class='testcase'>TodayAttendanceTest)</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.2')" >
+        error</a>
+
+    <div id='div_ft4.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.2: Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\student_manage_test\b_today_attendance_test.py", line 23, in setUpClass
+    Decrypt(cls.driver).do_decrypt(search_att_user_info['secondpwd'])
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\decrypt.py", line 17, in do_decrypt
+    self.click_decrypt_btn()
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\decrypt.py", line 7, in click_decrypt_btn
+    self.driver.find_element_by_id('btn-decrypt').click()
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 360, in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"id","selector":"btn-decrypt"}
+  (Session info: chrome=74.0.3729.108)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.18363 x86_64)
+
+Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\student_manage_test\b_today_attendance_test.py", line 23, in setUpClass
+    Decrypt(cls.driver).do_decrypt(search_att_user_info['secondpwd'])
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\decrypt.py", line 17, in do_decrypt
+    self.click_decrypt_btn()
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\decrypt.py", line 7, in click_decrypt_btn
+    self.driver.find_element_by_id('btn-decrypt').click()
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 360, in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"id","selector":"btn-decrypt"}
+  (Session info: chrome=74.0.3729.108)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.18363 x86_64)
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft4.3' class='none'>
+    <td class='errorCase'><div class='testcase'>TodayMorningExamTest)</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.3')" >
+        error</a>
+
+    <div id='div_ft4.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.3: Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\student_manage_test\c_today_morning_exam_test.py", line 19, in setUpClass
+    Decrypt(cls.driver).do_decrypt(today_morning_exam_user_info['secondpwd'])
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\decrypt.py", line 17, in do_decrypt
+    self.click_decrypt_btn()
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\decrypt.py", line 7, in click_decrypt_btn
+    self.driver.find_element_by_id('btn-decrypt').click()
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 360, in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"id","selector":"btn-decrypt"}
+  (Session info: chrome=74.0.3729.108)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.18363 x86_64)
+
+Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\student_manage_test\c_today_morning_exam_test.py", line 19, in setUpClass
+    Decrypt(cls.driver).do_decrypt(today_morning_exam_user_info['secondpwd'])
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\decrypt.py", line 17, in do_decrypt
+    self.click_decrypt_btn()
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\decrypt.py", line 7, in click_decrypt_btn
+    self.driver.find_element_by_id('btn-decrypt').click()
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 360, in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"id","selector":"btn-decrypt"}
+  (Session info: chrome=74.0.3729.108)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.18363 x86_64)
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft4.4' class='none'>
+    <td class='errorCase'><div class='testcase'>TakeLeaveTest)</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.4')" >
+        error</a>
+
+    <div id='div_ft4.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.4: Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\student_manage_test\d_take_leave_test.py", line 28, in setUpClass
+    Decrypt(cls.driver).do_decrypt(user_info['secondpwd'])
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\decrypt.py", line 17, in do_decrypt
+    self.click_decrypt_btn()
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\decrypt.py", line 7, in click_decrypt_btn
+    self.driver.find_element_by_id('btn-decrypt').click()
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 360, in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"id","selector":"btn-decrypt"}
+  (Session info: chrome=74.0.3729.108)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.18363 x86_64)
+
+Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\student_manage_test\d_take_leave_test.py", line 28, in setUpClass
+    Decrypt(cls.driver).do_decrypt(user_info['secondpwd'])
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\decrypt.py", line 17, in do_decrypt
+    self.click_decrypt_btn()
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\decrypt.py", line 7, in click_decrypt_btn
+    self.driver.find_element_by_id('btn-decrypt').click()
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 360, in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"id","selector":"btn-decrypt"}
+  (Session info: chrome=74.0.3729.108)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.18363 x86_64)
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft4.5' class='none'>
+    <td class='errorCase'><div class='testcase'>MorningExamTest)</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.5')" >
+        error</a>
+
+    <div id='div_ft4.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.5: Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\student_manage_test\e_morning_exam_test.py", line 23, in setUpClass
+    Decrypt(cls.driver).do_decrypt(user_info['secondpwd'])
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\decrypt.py", line 17, in do_decrypt
+    self.click_decrypt_btn()
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\decrypt.py", line 7, in click_decrypt_btn
+    self.driver.find_element_by_id('btn-decrypt').click()
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 360, in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"id","selector":"btn-decrypt"}
+  (Session info: chrome=74.0.3729.108)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.18363 x86_64)
+
+Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\student_manage_test\e_morning_exam_test.py", line 23, in setUpClass
+    Decrypt(cls.driver).do_decrypt(user_info['secondpwd'])
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\decrypt.py", line 17, in do_decrypt
+    self.click_decrypt_btn()
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\decrypt.py", line 7, in click_decrypt_btn
+    self.driver.find_element_by_id('btn-decrypt').click()
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 360, in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"id","selector":"btn-decrypt"}
+  (Session info: chrome=74.0.3729.108)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.18363 x86_64)
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft4.6' class='none'>
+    <td class='errorCase'><div class='testcase'>PhaseExamTest)</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.6')" >
+        error</a>
+
+    <div id='div_ft4.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.6: Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\student_manage_test\f_phase_test_test.py", line 24, in setUpClass
+    Decrypt(cls.driver).do_decrypt(user_info['secondpwd'])
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\decrypt.py", line 17, in do_decrypt
+    self.click_decrypt_btn()
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\decrypt.py", line 7, in click_decrypt_btn
+    self.driver.find_element_by_id('btn-decrypt').click()
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 360, in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"id","selector":"btn-decrypt"}
+  (Session info: chrome=74.0.3729.108)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.18363 x86_64)
+
+Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\student_manage_test\f_phase_test_test.py", line 24, in setUpClass
+    Decrypt(cls.driver).do_decrypt(user_info['secondpwd'])
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\decrypt.py", line 17, in do_decrypt
+    self.click_decrypt_btn()
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\decrypt.py", line 7, in click_decrypt_btn
+    self.driver.find_element_by_id('btn-decrypt').click()
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 360, in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"id","selector":"btn-decrypt"}
+  (Session info: chrome=74.0.3729.108)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.18363 x86_64)
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft4.7' class='none'>
+    <td class='errorCase'><div class='testcase'>PhaseExamRecordTest)</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.7')" >
+        error</a>
+
+    <div id='div_ft4.7' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.7').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.7: Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\student_manage_test\g_phase_exam_record_test.py", line 18, in setUpClass
+    Decrypt(cls.driver).do_decrypt(user_info['secondpwd'])
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\decrypt.py", line 17, in do_decrypt
+    self.click_decrypt_btn()
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\decrypt.py", line 7, in click_decrypt_btn
+    self.driver.find_element_by_id('btn-decrypt').click()
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 360, in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"id","selector":"btn-decrypt"}
+  (Session info: chrome=74.0.3729.108)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.18363 x86_64)
+
+Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\student_manage_test\g_phase_exam_record_test.py", line 18, in setUpClass
+    Decrypt(cls.driver).do_decrypt(user_info['secondpwd'])
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\decrypt.py", line 17, in do_decrypt
+    self.click_decrypt_btn()
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\decrypt.py", line 7, in click_decrypt_btn
+    self.driver.find_element_by_id('btn-decrypt').click()
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 360, in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"id","selector":"btn-decrypt"}
+  (Session info: chrome=74.0.3729.108)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.18363 x86_64)
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft4.8' class='none'>
+    <td class='errorCase'><div class='testcase'>ClassManageTest)</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.8')" >
+        error</a>
+
+    <div id='div_ft4.8' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.8').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.8: Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\student_manage_test\h_class_manage_test.py", line 19, in setUpClass
+    Decrypt(cls.driver).do_decrypt(user_info['secondpwd'])
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\decrypt.py", line 17, in do_decrypt
+    self.click_decrypt_btn()
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\decrypt.py", line 7, in click_decrypt_btn
+    self.driver.find_element_by_id('btn-decrypt').click()
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 360, in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"id","selector":"btn-decrypt"}
+  (Session info: chrome=74.0.3729.108)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.18363 x86_64)
+
+Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\student_manage_test\h_class_manage_test.py", line 19, in setUpClass
+    Decrypt(cls.driver).do_decrypt(user_info['secondpwd'])
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\decrypt.py", line 17, in do_decrypt
+    self.click_decrypt_btn()
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\decrypt.py", line 7, in click_decrypt_btn
+    self.driver.find_element_by_id('btn-decrypt').click()
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 360, in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"id","selector":"btn-decrypt"}
+  (Session info: chrome=74.0.3729.108)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.18363 x86_64)
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft4.9' class='none'>
+    <td class='errorCase'><div class='testcase'>CourseScheduleTest)</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.9')" >
+        error</a>
+
+    <div id='div_ft4.9' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.9').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.9: Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\student_manage_test\i_curriculum_manage_test.py", line 22, in setUpClass
+    Decrypt(cls.driver).do_decrypt(user_info['secondpwd'])
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\decrypt.py", line 17, in do_decrypt
+    self.click_decrypt_btn()
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\decrypt.py", line 7, in click_decrypt_btn
+    self.driver.find_element_by_id('btn-decrypt').click()
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 360, in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"id","selector":"btn-decrypt"}
+  (Session info: chrome=74.0.3729.108)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.18363 x86_64)
+
+Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\student_manage_test\i_curriculum_manage_test.py", line 22, in setUpClass
+    Decrypt(cls.driver).do_decrypt(user_info['secondpwd'])
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\decrypt.py", line 17, in do_decrypt
+    self.click_decrypt_btn()
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\login\decrypt.py", line 7, in click_decrypt_btn
+    self.driver.find_element_by_id('btn-decrypt').click()
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 360, in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "D:\Python\phase two\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"id","selector":"btn-decrypt"}
+  (Session info: chrome=74.0.3729.108)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.18363 x86_64)
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='failClass'>
+    <td>woniuboss.bin.woniuboss_gui.employment_management_test.test_employment_management.EmploymentManagementTest</td>
+    <td>14</td>
+    <td>4</td>
+    <td>10</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c5',14)">Detail</a></td>
+</tr>
+
+<tr id='ft5.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_em_class_0_0</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft5.1')" >
+        fail</a>
+
+    <div id='div_ft5.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft5.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft5.1: Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\employment_management_test\test_employment_management.py", line 156, in test_em_class
+    cls.assertEqual(actual, expect)
+  File "D:\Python\Python37-32\lib\unittest\case.py", line 852, in assertEqual
+    assertion_func(first, second, msg=msg)
+AssertionError: 'EM_failed' != 'EM_correct'
+- EM_failed
++ EM_correct
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\employment_management_test\test_employment_management.py", line 160, in test_em_class
+    cls.assertEqual(actual, expect)
+AssertionError: 'EM_failed' != 'EM_correct'
+- EM_failed
++ EM_correct
+
+Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\employment_management_test\test_employment_management.py", line 156, in test_em_class
+    cls.assertEqual(actual, expect)
+  File "D:\Python\Python37-32\lib\unittest\case.py", line 852, in assertEqual
+    assertion_func(first, second, msg=msg)
+AssertionError: 'EM_failed' != 'EM_correct'
+- EM_failed
++ EM_correct
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\employment_management_test\test_employment_management.py", line 160, in test_em_class
+    cls.assertEqual(actual, expect)
+AssertionError: 'EM_failed' != 'EM_correct'
+- EM_failed
++ EM_correct
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft5.2' class='none'>
+    <td class='failCase'><div class='testcase'>test_em_class_query_0__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft5.2')" >
+        fail</a>
+
+    <div id='div_ft5.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft5.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft5.2: Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\employment_management_test\test_employment_management.py", line 186, in test_em_class_query
+    cls.assertEqual(actual, expect)
+  File "D:\Python\Python37-32\lib\unittest\case.py", line 852, in assertEqual
+    assertion_func(first, second, msg=msg)
+AssertionError: '' != '付文攀'
++ 付文攀
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\employment_management_test\test_employment_management.py", line 191, in test_em_class_query
+    cls.assertEqual(actual, expect)
+AssertionError: 'EM_failed' != '付文攀'
+- EM_failed
++ 付文攀
+
+Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\employment_management_test\test_employment_management.py", line 186, in test_em_class_query
+    cls.assertEqual(actual, expect)
+  File "D:\Python\Python37-32\lib\unittest\case.py", line 852, in assertEqual
+    assertion_func(first, second, msg=msg)
+AssertionError: '' != '付文攀'
++ 付文攀
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\employment_management_test\test_employment_management.py", line 191, in test_em_class_query
+    cls.assertEqual(actual, expect)
+AssertionError: 'EM_failed' != '付文攀'
+- EM_failed
++ 付文攀
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft5.3' class='none'>
+    <td class='failCase'><div class='testcase'>test_em_direction_0_0</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft5.3')" >
+        fail</a>
+
+    <div id='div_ft5.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft5.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft5.3: Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\employment_management_test\test_employment_management.py", line 173, in test_em_direction
+    cls.assertEqual(actual, expect)
+  File "D:\Python\Python37-32\lib\unittest\case.py", line 852, in assertEqual
+    assertion_func(first, second, msg=msg)
+AssertionError: 'EM_failed' != 'EM_correct'
+- EM_failed
++ EM_correct
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\employment_management_test\test_employment_management.py", line 177, in test_em_direction
+    cls.assertEqual(actual, expect)
+AssertionError: 'EM_failed' != 'EM_correct'
+- EM_failed
++ EM_correct
+
+Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\employment_management_test\test_employment_management.py", line 173, in test_em_direction
+    cls.assertEqual(actual, expect)
+  File "D:\Python\Python37-32\lib\unittest\case.py", line 852, in assertEqual
+    assertion_func(first, second, msg=msg)
+AssertionError: 'EM_failed' != 'EM_correct'
+- EM_failed
++ EM_correct
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\employment_management_test\test_employment_management.py", line 177, in test_em_direction
+    cls.assertEqual(actual, expect)
+AssertionError: 'EM_failed' != 'EM_correct'
+- EM_failed
++ EM_correct
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft5.4' class='none'>
+    <td class='failCase'><div class='testcase'>test_em_direction_query_0__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft5.4')" >
+        fail</a>
+
+    <div id='div_ft5.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft5.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft5.4: Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\employment_management_test\test_employment_management.py", line 199, in test_em_direction_query
+    actual = Service.text_css(cls.driver,'/html/body/div[7]/div[3]/div/div/div/div[2]/div[3]/div[2]/div[2]/table/tbody/tr[1]/td[1]')
+  File "D:\Python\phase two\woniuboss\tools\woniuboss_gui\service.py", line 38, in text_css
+    text_css = driver.find_element_by_css(text_css).text
+AttributeError: 'WebDriver' object has no attribute 'find_element_by_css'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\employment_management_test\test_employment_management.py", line 205, in test_em_direction_query
+    cls.assertEqual(actual, expect)
+AssertionError: 'EM_failed' != '付文攀'
+- EM_failed
++ 付文攀
+
+Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\employment_management_test\test_employment_management.py", line 199, in test_em_direction_query
+    actual = Service.text_css(cls.driver,'/html/body/div[7]/div[3]/div/div/div/div[2]/div[3]/div[2]/div[2]/table/tbody/tr[1]/td[1]')
+  File "D:\Python\phase two\woniuboss\tools\woniuboss_gui\service.py", line 38, in text_css
+    text_css = driver.find_element_by_css(text_css).text
+AttributeError: 'WebDriver' object has no attribute 'find_element_by_css'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\employment_management_test\test_employment_management.py", line 205, in test_em_direction_query
+    cls.assertEqual(actual, expect)
+AssertionError: 'EM_failed' != '付文攀'
+- EM_failed
++ 付文攀
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt5.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_em_employment_interface_0_0</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt5.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_em_end_time_0_0</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='ft5.7' class='none'>
+    <td class='failCase'><div class='testcase'>test_em_induction_0__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft5.7')" >
+        fail</a>
+
+    <div id='div_ft5.7' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft5.7').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft5.7: Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\employment_management_test\test_employment_management.py", line 288, in test_em_induction
+    EmploymentManagement(cls.driver).em_induction(enterprise, jobs, em_induction_time,em_induction_salary, em_interview_note)
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\employment_management\employment_management.py", line 146, in em_induction
+    self.driver.find_element_by_link_text('入职情况').click()
+selenium.common.exceptions.NoSuchElementException: Message: Unable to locate element: 入职情况
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\employment_management_test\test_employment_management.py", line 305, in test_em_induction
+    cls.assertEqual(actual, expect)
+AssertionError: 'EM_failed' != 'EM_correct'
+- EM_failed
++ EM_correct
+
+Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\employment_management_test\test_employment_management.py", line 288, in test_em_induction
+    EmploymentManagement(cls.driver).em_induction(enterprise, jobs, em_induction_time,em_induction_salary, em_interview_note)
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\employment_management\employment_management.py", line 146, in em_induction
+    self.driver.find_element_by_link_text('入职情况').click()
+selenium.common.exceptions.NoSuchElementException: Message: Unable to locate element: 入职情况
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\employment_management_test\test_employment_management.py", line 305, in test_em_induction
+    cls.assertEqual(actual, expect)
+AssertionError: 'EM_failed' != 'EM_correct'
+- EM_failed
++ EM_correct
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt5.8' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_em_interview_query_0__</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='ft5.9' class='none'>
+    <td class='failCase'><div class='testcase'>test_em_mock_interviews_0_12000</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft5.9')" >
+        fail</a>
+
+    <div id='div_ft5.9' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft5.9').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft5.9: Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\employment_management_test\test_employment_management.py", line 242, in test_em_mock_interviews
+    EmploymentManagement(cls.driver).em_mock_interviews(em_xpected_salary, mock_interviews, em_note)
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\employment_management\employment_management.py", line 107, in em_mock_interviews
+    self.driver.find_element_by_link_text('模拟面试').click()
+selenium.common.exceptions.NoSuchElementException: Message: Unable to locate element: 模拟面试
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\employment_management_test\test_employment_management.py", line 259, in test_em_mock_interviews
+    cls.assertEqual(actual, expect)
+AssertionError: 'EM_failed' != 'EM_correct'
+- EM_failed
++ EM_correct
+
+Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\employment_management_test\test_employment_management.py", line 242, in test_em_mock_interviews
+    EmploymentManagement(cls.driver).em_mock_interviews(em_xpected_salary, mock_interviews, em_note)
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\employment_management\employment_management.py", line 107, in em_mock_interviews
+    self.driver.find_element_by_link_text('模拟面试').click()
+selenium.common.exceptions.NoSuchElementException: Message: Unable to locate element: 模拟面试
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\employment_management_test\test_employment_management.py", line 259, in test_em_mock_interviews
+    cls.assertEqual(actual, expect)
+AssertionError: 'EM_failed' != 'EM_correct'
+- EM_failed
++ EM_correct
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft5.10' class='none'>
+    <td class='failCase'><div class='testcase'>test_em_name_query_0__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft5.10')" >
+        fail</a>
+
+    <div id='div_ft5.10' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft5.10').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft5.10: Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\employment_management_test\test_employment_management.py", line 211, in test_em_name_query
+    EmploymentManagement(cls.driver).em_name_query(em_name)
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\employment_management\employment_management.py", line 92, in em_name_query
+    name_input = self.driver.find_element_by_css('/html/body/div[7]/div[3]/div/div/div/div[2]/div[2]/input[1]')
+AttributeError: 'WebDriver' object has no attribute 'find_element_by_css'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\employment_management_test\test_employment_management.py", line 219, in test_em_name_query
+    cls.assertEqual(actual, expect)
+AssertionError: 'EM_failed' != '付文攀'
+- EM_failed
++ 付文攀
+
+Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\employment_management_test\test_employment_management.py", line 211, in test_em_name_query
+    EmploymentManagement(cls.driver).em_name_query(em_name)
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\employment_management\employment_management.py", line 92, in em_name_query
+    name_input = self.driver.find_element_by_css('/html/body/div[7]/div[3]/div/div/div/div[2]/div[2]/input[1]')
+AttributeError: 'WebDriver' object has no attribute 'find_element_by_css'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\employment_management_test\test_employment_management.py", line 219, in test_em_name_query
+    cls.assertEqual(actual, expect)
+AssertionError: 'EM_failed' != '付文攀'
+- EM_failed
++ 付文攀
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft5.11' class='none'>
+    <td class='failCase'><div class='testcase'>test_em_real_interview_0__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft5.11')" >
+        fail</a>
+
+    <div id='div_ft5.11' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft5.11').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft5.11: Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\employment_management_test\test_employment_management.py", line 265, in test_em_real_interview
+    EmploymentManagement(cls.driver).em_real_interview(enterprise, jobs, em_interview_time, em_interview_feedback)
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\employment_management\employment_management.py", line 125, in em_real_interview
+    self.driver.find_element_by_link_text('真实面试').click()
+selenium.common.exceptions.NoSuchElementException: Message: Unable to locate element: 真实面试
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\employment_management_test\test_employment_management.py", line 282, in test_em_real_interview
+    cls.assertEqual(actual, expect)
+AssertionError: 'EM_failed' != 'EM_correct'
+- EM_failed
++ EM_correct
+
+Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\employment_management_test\test_employment_management.py", line 265, in test_em_real_interview
+    EmploymentManagement(cls.driver).em_real_interview(enterprise, jobs, em_interview_time, em_interview_feedback)
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\employment_management\employment_management.py", line 125, in em_real_interview
+    self.driver.find_element_by_link_text('真实面试').click()
+selenium.common.exceptions.NoSuchElementException: Message: Unable to locate element: 真实面试
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\employment_management_test\test_employment_management.py", line 282, in test_em_real_interview
+    cls.assertEqual(actual, expect)
+AssertionError: 'EM_failed' != 'EM_correct'
+- EM_failed
++ EM_correct
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft5.12' class='none'>
+    <td class='failCase'><div class='testcase'>test_em_student_id_query_0_0</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft5.12')" >
+        fail</a>
+
+    <div id='div_ft5.12' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft5.12').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft5.12: Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\employment_management_test\test_employment_management.py", line 225, in test_em_student_id_query
+    EmploymentManagement(cls.driver).em_student_id_query(student_id_query)
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\employment_management\employment_management.py", line 98, in em_student_id_query
+    student_id = self.driver.find_element_by_css('/html/body/div[7]/div[3]/div/div/div/div[2]/div[2]/input[2]')
+AttributeError: 'WebDriver' object has no attribute 'find_element_by_css'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\employment_management_test\test_employment_management.py", line 233, in test_em_student_id_query
+    cls.assertEqual(actual, expect)
+AssertionError: 'EM_failed' != '0=0'
+- EM_failed
++ 0=0
+
+Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\employment_management_test\test_employment_management.py", line 225, in test_em_student_id_query
+    EmploymentManagement(cls.driver).em_student_id_query(student_id_query)
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\employment_management\employment_management.py", line 98, in em_student_id_query
+    student_id = self.driver.find_element_by_css('/html/body/div[7]/div[3]/div/div/div/div[2]/div[2]/input[2]')
+AttributeError: 'WebDriver' object has no attribute 'find_element_by_css'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\employment_management_test\test_employment_management.py", line 233, in test_em_student_id_query
+    cls.assertEqual(actual, expect)
+AssertionError: 'EM_failed' != '0=0'
+- EM_failed
++ 0=0
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt5.13' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_em_technology_interface_0_0</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='ft5.14' class='none'>
+    <td class='failCase'><div class='testcase'>test_em_technology_interview_0__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft5.14')" >
+        fail</a>
+
+    <div id='div_ft5.14' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft5.14').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft5.14: Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\employment_management_test\test_employment_management.py", line 107, in test_em_technology_interview
+    EmploymentManagement(cls.driver).em_technology_interview(results, em_questions, em_evaluation)
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\employment_management\employment_management.py", line 46, in em_technology_interview
+    self.em_questions(em_questions)
+selenium.common.exceptions.ElementNotInteractableException: Message: Element &lt;textarea id="squestion" class="text" name="sr.questions"&gt; could not be scrolled into view
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\employment_management_test\test_employment_management.py", line 124, in test_em_technology_interview
+    cls.assertEqual(actual, expect)
+AssertionError: 'EM_failed' != 'EM_correct'
+- EM_failed
++ EM_correct
+
+Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\employment_management_test\test_employment_management.py", line 107, in test_em_technology_interview
+    EmploymentManagement(cls.driver).em_technology_interview(results, em_questions, em_evaluation)
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\employment_management\employment_management.py", line 46, in em_technology_interview
+    self.em_questions(em_questions)
+selenium.common.exceptions.ElementNotInteractableException: Message: Element &lt;textarea id="squestion" class="text" name="sr.questions"&gt; could not be scrolled into view
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\employment_management_test\test_employment_management.py", line 124, in test_em_technology_interview
+    cls.assertEqual(actual, expect)
+AssertionError: 'EM_failed' != 'EM_correct'
+- EM_failed
++ EM_correct
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='failClass'>
+    <td>woniuboss.bin.woniuboss_gui.financial_management_test.test_financial_management.FinancialManagementTest</td>
+    <td>14</td>
+    <td>5</td>
+    <td>9</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c6',14)">Detail</a></td>
+</tr>
+
+<tr id='pt6.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_fm_1_subject_0_0</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt6.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_fm_2_subject_0_0</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='ft6.3' class='none'>
+    <td class='failCase'><div class='testcase'>test_fm_accounts_interface_0_0</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft6.3')" >
+        fail</a>
+
+    <div id='div_ft6.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft6.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft6.3: Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\financial_management_test\test_financial_management.py", line 204, in test_fm_accounts_interface
+    FinancialManagement(cls.driver).fm_accounts_interface()
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\financial_management\financial_management.py", line 146, in fm_accounts_interface
+    Service.click_text(self.driver, '公账导入')
+selenium.common.exceptions.NoSuchElementException: Message: Unable to locate element: 公账导入
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\financial_management_test\test_financial_management.py", line 214, in test_fm_accounts_interface
+    cls.assertEqual(actual, expect)
+AssertionError: 'FM_failed' != 'FM_correct'
+- FM_failed
++ FM_correct
+
+Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\financial_management_test\test_financial_management.py", line 204, in test_fm_accounts_interface
+    FinancialManagement(cls.driver).fm_accounts_interface()
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\financial_management\financial_management.py", line 146, in fm_accounts_interface
+    Service.click_text(self.driver, '公账导入')
+selenium.common.exceptions.NoSuchElementException: Message: Unable to locate element: 公账导入
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\financial_management_test\test_financial_management.py", line 214, in test_fm_accounts_interface
+    cls.assertEqual(actual, expect)
+AssertionError: 'FM_failed' != 'FM_correct'
+- FM_failed
++ FM_correct
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt6.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_fm_financial_interface_0_0</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='ft6.5' class='none'>
+    <td class='failCase'><div class='testcase'>test_fm_financial_query_0_2020_04_01</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft6.5')" >
+        fail</a>
+
+    <div id='div_ft6.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft6.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft6.5: Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\financial_management_test\test_financial_management.py", line 110, in test_fm_financial_query
+    actual = Service.text_css(cls.driver, '/html/body/div[7]/div[3]/div/div/div/div[1]/div[4]'
+  File "D:\Python\phase two\woniuboss\tools\woniuboss_gui\service.py", line 38, in text_css
+    text_css = driver.find_element_by_css(text_css).text
+AttributeError: 'WebDriver' object has no attribute 'find_element_by_css'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\financial_management_test\test_financial_management.py", line 117, in test_fm_financial_query
+    cls.assertEqual(actual, expect)
+AssertionError: 'FM_failed' != '测试账号'
+- FM_failed
++ 测试账号
+
+Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\financial_management_test\test_financial_management.py", line 110, in test_fm_financial_query
+    actual = Service.text_css(cls.driver, '/html/body/div[7]/div[3]/div/div/div/div[1]/div[4]'
+  File "D:\Python\phase two\woniuboss\tools\woniuboss_gui\service.py", line 38, in text_css
+    text_css = driver.find_element_by_css(text_css).text
+AttributeError: 'WebDriver' object has no attribute 'find_element_by_css'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\financial_management_test\test_financial_management.py", line 117, in test_fm_financial_query
+    cls.assertEqual(actual, expect)
+AssertionError: 'FM_failed' != '测试账号'
+- FM_failed
++ 测试账号
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft6.6' class='none'>
+    <td class='failCase'><div class='testcase'>test_fm_last_month_query_0_0</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft6.6')" >
+        fail</a>
+
+    <div id='div_ft6.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft6.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft6.6: Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\financial_management_test\test_financial_management.py", line 123, in test_fm_last_month_query
+    FinancialManagement(cls.driver).fm_last_month_query()
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\financial_management\financial_management.py", line 55, in fm_last_month_query
+    box = Service.click_id(self.driver, 'electLastMonthAll')
+selenium.common.exceptions.NoSuchElementException: Message: Unable to locate element: [id="electLastMonthAll"]
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\financial_management_test\test_financial_management.py", line 132, in test_fm_last_month_query
+    cls.assertEqual(actual, expect)
+AssertionError: 'FM_failed' != '无符合条件的记录'
+- FM_failed
++ 无符合条件的记录
+
+Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\financial_management_test\test_financial_management.py", line 123, in test_fm_last_month_query
+    FinancialManagement(cls.driver).fm_last_month_query()
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\financial_management\financial_management.py", line 55, in fm_last_month_query
+    box = Service.click_id(self.driver, 'electLastMonthAll')
+selenium.common.exceptions.NoSuchElementException: Message: Unable to locate element: [id="electLastMonthAll"]
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\financial_management_test\test_financial_management.py", line 132, in test_fm_last_month_query
+    cls.assertEqual(actual, expect)
+AssertionError: 'FM_failed' != '无符合条件的记录'
+- FM_failed
++ 无符合条件的记录
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft6.7' class='none'>
+    <td class='failCase'><div class='testcase'>test_fm_modify_water_0__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft6.7')" >
+        fail</a>
+
+    <div id='div_ft6.7' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft6.7').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft6.7: Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\financial_management_test\test_financial_management.py", line 181, in test_fm_modify_water
+    fm_amount, trading, fm_other_trading, fm_capital_uses)
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\financial_management\financial_management.py", line 71, in fm_new_water
+    Service.box_id_click(self.driver, 'Select3', fm_type)
+selenium.common.exceptions.NoSuchElementException: Message: Could not locate element with visible text: 公账
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\financial_management_test\test_financial_management.py", line 197, in test_fm_modify_water
+    cls.assertEqual(actual, expect)
+AssertionError: 'FM_failed' != 'FM_correct'
+- FM_failed
++ FM_correct
+
+Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\financial_management_test\test_financial_management.py", line 181, in test_fm_modify_water
+    fm_amount, trading, fm_other_trading, fm_capital_uses)
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\financial_management\financial_management.py", line 71, in fm_new_water
+    Service.box_id_click(self.driver, 'Select3', fm_type)
+selenium.common.exceptions.NoSuchElementException: Message: Could not locate element with visible text: 公账
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\financial_management_test\test_financial_management.py", line 197, in test_fm_modify_water
+    cls.assertEqual(actual, expect)
+AssertionError: 'FM_failed' != 'FM_correct'
+- FM_failed
++ FM_correct
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt6.8' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_fm_month_query_0_0</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='ft6.9' class='none'>
+    <td class='failCase'><div class='testcase'>test_fm_name_query_0__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft6.9')" >
+        fail</a>
+
+    <div id='div_ft6.9' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft6.9').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft6.9: Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\financial_management_test\test_financial_management.py", line 272, in test_fm_name_query
+    FinancialManagement(cls.driver).fm_name_query(fm_name)
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\financial_management\financial_management.py", line 171, in fm_name_query
+    self.fm_name_search(fm_name)
+selenium.common.exceptions.ElementNotInteractableException: Message: Element &lt;input id="selectStuName" name="finance.stuName" type="text"&gt; could not be scrolled into view
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\financial_management_test\test_financial_management.py", line 281, in test_fm_name_query
+    cls.assertEqual(actual, expect)
+AssertionError: 'FM_failed' != '赵千'
+- FM_failed
++ 赵千
+
+Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\financial_management_test\test_financial_management.py", line 272, in test_fm_name_query
+    FinancialManagement(cls.driver).fm_name_query(fm_name)
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\financial_management\financial_management.py", line 171, in fm_name_query
+    self.fm_name_search(fm_name)
+selenium.common.exceptions.ElementNotInteractableException: Message: Element &lt;input id="selectStuName" name="finance.stuName" type="text"&gt; could not be scrolled into view
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\financial_management_test\test_financial_management.py", line 281, in test_fm_name_query
+    cls.assertEqual(actual, expect)
+AssertionError: 'FM_failed' != '赵千'
+- FM_failed
++ 赵千
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft6.10' class='none'>
+    <td class='failCase'><div class='testcase'>test_fm_new_water_0__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft6.10')" >
+        fail</a>
+
+    <div id='div_ft6.10' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft6.10').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft6.10: Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\financial_management_test\test_financial_management.py", line 156, in test_fm_new_water
+    fm_amount, trading, fm_other_trading, fm_capital_uses)
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\financial_management\financial_management.py", line 71, in fm_new_water
+    Service.box_id_click(self.driver, 'Select3', fm_type)
+selenium.common.exceptions.NoSuchElementException: Message: Could not locate element with visible text: 公账
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\financial_management_test\test_financial_management.py", line 172, in test_fm_new_water
+    cls.assertEqual(actual, expect)
+AssertionError: 'FM_failed' != 'FM_correct'
+- FM_failed
++ FM_correct
+
+Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\financial_management_test\test_financial_management.py", line 156, in test_fm_new_water
+    fm_amount, trading, fm_other_trading, fm_capital_uses)
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\financial_management\financial_management.py", line 71, in fm_new_water
+    Service.box_id_click(self.driver, 'Select3', fm_type)
+selenium.common.exceptions.NoSuchElementException: Message: Could not locate element with visible text: 公账
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\financial_management_test\test_financial_management.py", line 172, in test_fm_new_water
+    cls.assertEqual(actual, expect)
+AssertionError: 'FM_failed' != 'FM_correct'
+- FM_failed
++ FM_correct
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft6.11' class='none'>
+    <td class='failCase'><div class='testcase'>test_fm_payment_refund_0_WNCDC035</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft6.11')" >
+        fail</a>
+
+    <div id='div_ft6.11' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft6.11').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft6.11: Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\financial_management_test\test_financial_management.py", line 288, in test_fm_payment_refund
+    FinancialManagement(cls.driver).fm_payment_refund(student_class, stustatus, fm_stupay_amount, select, payment_account, fm_added)
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\financial_management\financial_management.py", line 183, in fm_payment_refund
+    Service.send_input(stupay_amount, fm_stupay_amount)
+selenium.common.exceptions.ElementNotInteractableException: Message: Element &lt;input id="stupay" class="text form-control" name="finance.borrow" type="text"&gt; could not be scrolled into view
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\financial_management_test\test_financial_management.py", line 302, in test_fm_payment_refund
+    cls.assertEqual(actual, expect)
+AssertionError: 'FM_failed' != 'FM_correct'
+- FM_failed
++ FM_correct
+
+Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\financial_management_test\test_financial_management.py", line 288, in test_fm_payment_refund
+    FinancialManagement(cls.driver).fm_payment_refund(student_class, stustatus, fm_stupay_amount, select, payment_account, fm_added)
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\financial_management\financial_management.py", line 183, in fm_payment_refund
+    Service.send_input(stupay_amount, fm_stupay_amount)
+selenium.common.exceptions.ElementNotInteractableException: Message: Element &lt;input id="stupay" class="text form-control" name="finance.borrow" type="text"&gt; could not be scrolled into view
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\financial_management_test\test_financial_management.py", line 302, in test_fm_payment_refund
+    cls.assertEqual(actual, expect)
+AssertionError: 'FM_failed' != 'FM_correct'
+- FM_failed
++ FM_correct
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft6.12' class='none'>
+    <td class='failCase'><div class='testcase'>test_fm_search_0_0</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft6.12')" >
+        fail</a>
+
+    <div id='div_ft6.12' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft6.12').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft6.12: Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\financial_management_test\test_financial_management.py", line 244, in test_fm_search
+    cls.assertEqual(actual, expect)
+  File "D:\Python\Python37-32\lib\unittest\case.py", line 852, in assertEqual
+    assertion_func(first, second, msg=msg)
+AssertionError: 'FM_failed' != 'FM_correct'
+- FM_failed
++ FM_correct
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\financial_management_test\test_financial_management.py", line 248, in test_fm_search
+    cls.assertEqual(actual, expect)
+AssertionError: 'FM_failed' != 'FM_correct'
+- FM_failed
++ FM_correct
+
+Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\financial_management_test\test_financial_management.py", line 244, in test_fm_search
+    cls.assertEqual(actual, expect)
+  File "D:\Python\Python37-32\lib\unittest\case.py", line 852, in assertEqual
+    assertion_func(first, second, msg=msg)
+AssertionError: 'FM_failed' != 'FM_correct'
+- FM_failed
++ FM_correct
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\financial_management_test\test_financial_management.py", line 248, in test_fm_search
+    cls.assertEqual(actual, expect)
+AssertionError: 'FM_failed' != 'FM_correct'
+- FM_failed
++ FM_correct
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft6.13' class='none'>
+    <td class='failCase'><div class='testcase'>test_fm_state_query_0__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft6.13')" >
+        fail</a>
+
+    <div id='div_ft6.13' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft6.13').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft6.13: Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\financial_management_test\test_financial_management.py", line 261, in test_fm_state_query
+    cls.assertEqual(actual, expect)
+  File "D:\Python\Python37-32\lib\unittest\case.py", line 852, in assertEqual
+    assertion_func(first, second, msg=msg)
+AssertionError: '' != '赵千'
++ 赵千
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\financial_management_test\test_financial_management.py", line 266, in test_fm_state_query
+    cls.assertEqual(actual, expect)
+AssertionError: 'FM_failed' != '赵千'
+- FM_failed
++ 赵千
+
+Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\financial_management_test\test_financial_management.py", line 261, in test_fm_state_query
+    cls.assertEqual(actual, expect)
+  File "D:\Python\Python37-32\lib\unittest\case.py", line 852, in assertEqual
+    assertion_func(first, second, msg=msg)
+AssertionError: '' != '赵千'
++ 赵千
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\financial_management_test\test_financial_management.py", line 266, in test_fm_state_query
+    cls.assertEqual(actual, expect)
+AssertionError: 'FM_failed' != '赵千'
+- FM_failed
++ 赵千
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt6.14' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_fm_students_interface_0_0</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='failClass'>
+    <td>woniuboss.bin.woniuboss_gui.personnel_management_test.test_personnel_management.PersonnelManagementTest</td>
+    <td>10</td>
+    <td>1</td>
+    <td>9</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c7',10)">Detail</a></td>
+</tr>
+
+<tr id='ft7.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_pm_area_0_0</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft7.1')" >
+        fail</a>
+
+    <div id='div_ft7.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft7.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft7.1: Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\personnel_management_test\test_personnel_management.py", line 68, in test_pm_area
+    if '全部' in test_pm_area:
+TypeError: argument of type 'NoneType' is not iterable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\personnel_management_test\test_personnel_management.py", line 77, in test_pm_area
+    cls.assertEqual(actual, expect)
+AssertionError: 'PM_failed' != 'PM_correct'
+- PM_failed
++ PM_correct
+
+Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\personnel_management_test\test_personnel_management.py", line 68, in test_pm_area
+    if '全部' in test_pm_area:
+TypeError: argument of type 'NoneType' is not iterable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\personnel_management_test\test_personnel_management.py", line 77, in test_pm_area
+    cls.assertEqual(actual, expect)
+AssertionError: 'PM_failed' != 'PM_correct'
+- PM_failed
++ PM_correct
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft7.2' class='none'>
+    <td class='failCase'><div class='testcase'>test_pm_area_query_0__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft7.2')" >
+        fail</a>
+
+    <div id='div_ft7.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft7.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft7.2: Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\personnel_management_test\test_personnel_management.py", line 121, in test_pm_area_query
+    PersonnelManagement(cls.driver).pm_area_query(region)
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\personnel_management\personnel_management.py", line 43, in pm_area_query
+    self.pm_click_query()
+AttributeError: 'WebDriver' object has no attribute 'find_element_by_css'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\personnel_management_test\test_personnel_management.py", line 131, in test_pm_area_query
+    cls.assertEqual(actual, expect)
+AssertionError: 'PM_failed' != 'WNCD004'
+- PM_failed
++ WNCD004
+
+Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\personnel_management_test\test_personnel_management.py", line 121, in test_pm_area_query
+    PersonnelManagement(cls.driver).pm_area_query(region)
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\personnel_management\personnel_management.py", line 43, in pm_area_query
+    self.pm_click_query()
+AttributeError: 'WebDriver' object has no attribute 'find_element_by_css'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\personnel_management_test\test_personnel_management.py", line 131, in test_pm_area_query
+    cls.assertEqual(actual, expect)
+AssertionError: 'PM_failed' != 'WNCD004'
+- PM_failed
++ WNCD004
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft7.3' class='none'>
+    <td class='failCase'><div class='testcase'>test_pm_department_0_0</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft7.3')" >
+        fail</a>
+
+    <div id='div_ft7.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft7.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft7.3: Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\personnel_management_test\test_personnel_management.py", line 84, in test_pm_department
+    test_pm_department = PersonnelManagement(cls.driver).pm_department()
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\personnel_management\personnel_management.py", line 23, in pm_department
+    Service.box_content_css(self.driver, 'select.sel-text:nth-child(2)')
+AttributeError: 'WebDriver' object has no attribute 'find_element_by_css'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\personnel_management_test\test_personnel_management.py", line 95, in test_pm_department
+    cls.assertEqual(actual, expect)
+AssertionError: 'PM_failed' != 'PM_correct'
+- PM_failed
++ PM_correct
+
+Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\personnel_management_test\test_personnel_management.py", line 84, in test_pm_department
+    test_pm_department = PersonnelManagement(cls.driver).pm_department()
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\personnel_management\personnel_management.py", line 23, in pm_department
+    Service.box_content_css(self.driver, 'select.sel-text:nth-child(2)')
+AttributeError: 'WebDriver' object has no attribute 'find_element_by_css'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\personnel_management_test\test_personnel_management.py", line 95, in test_pm_department
+    cls.assertEqual(actual, expect)
+AssertionError: 'PM_failed' != 'PM_correct'
+- PM_failed
++ PM_correct
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft7.4' class='none'>
+    <td class='failCase'><div class='testcase'>test_pm_department_query_0__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft7.4')" >
+        fail</a>
+
+    <div id='div_ft7.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft7.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft7.4: Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\personnel_management_test\test_personnel_management.py", line 137, in test_pm_department_query
+    PersonnelManagement(cls.driver).pm_department_query(region, department)
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\personnel_management\personnel_management.py", line 48, in pm_department_query
+    Service.box_css_click(self.driver, 'select.sel-text:nth-child(2)', department)
+AttributeError: 'WebDriver' object has no attribute 'find_element_id_css'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\personnel_management_test\test_personnel_management.py", line 147, in test_pm_department_query
+    cls.assertEqual(actual, expect)
+AssertionError: 'PM_failed' != 'WNCD004'
+- PM_failed
++ WNCD004
+
+Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\personnel_management_test\test_personnel_management.py", line 137, in test_pm_department_query
+    PersonnelManagement(cls.driver).pm_department_query(region, department)
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\personnel_management\personnel_management.py", line 48, in pm_department_query
+    Service.box_css_click(self.driver, 'select.sel-text:nth-child(2)', department)
+AttributeError: 'WebDriver' object has no attribute 'find_element_id_css'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\personnel_management_test\test_personnel_management.py", line 147, in test_pm_department_query
+    cls.assertEqual(actual, expect)
+AssertionError: 'PM_failed' != 'WNCD004'
+- PM_failed
++ WNCD004
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft7.5' class='none'>
+    <td class='failCase'><div class='testcase'>test_pm_modify_input_0__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft7.5')" >
+        fail</a>
+
+    <div id='div_ft7.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft7.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft7.5: Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\personnel_management_test\test_personnel_management.py", line 203, in test_pm_modify_input
+    PersonnelManagement(cls.driver).pm_modify_input(area, department, uname, number, position, gender, phone, email,qq, state)
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\personnel_management\personnel_management.py", line 113, in pm_modify_input
+    self.pm_name_input_query(uname)
+AttributeError: 'WebDriver' object has no attribute 'find_element_by_css'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\personnel_management_test\test_personnel_management.py", line 217, in test_pm_modify_input
+    cls.assertEqual(actual, expect)
+AssertionError: 'PM_failed' != 'PM_correct'
+- PM_failed
++ PM_correct
+
+Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\personnel_management_test\test_personnel_management.py", line 203, in test_pm_modify_input
+    PersonnelManagement(cls.driver).pm_modify_input(area, department, uname, number, position, gender, phone, email,qq, state)
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\personnel_management\personnel_management.py", line 113, in pm_modify_input
+    self.pm_name_input_query(uname)
+AttributeError: 'WebDriver' object has no attribute 'find_element_by_css'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\personnel_management_test\test_personnel_management.py", line 217, in test_pm_modify_input
+    cls.assertEqual(actual, expect)
+AssertionError: 'PM_failed' != 'PM_correct'
+- PM_failed
++ PM_correct
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft7.6' class='none'>
+    <td class='failCase'><div class='testcase'>test_pm_name_input_query_0__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft7.6')" >
+        fail</a>
+
+    <div id='div_ft7.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft7.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft7.6: Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\personnel_management_test\test_personnel_management.py", line 168, in test_pm_name_input_query
+    PersonnelManagement(cls.driver).pm_name_input_query(uname)
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\personnel_management\personnel_management.py", line 60, in pm_name_input_query
+    self.pm_name_input(uname)
+AttributeError: 'WebDriver' object has no attribute 'find_element_by_css'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\personnel_management_test\test_personnel_management.py", line 177, in test_pm_name_input_query
+    cls.assertEqual(actual, expect)
+AssertionError: 'PM_failed' != 'WNCD004'
+- PM_failed
++ WNCD004
+
+Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\personnel_management_test\test_personnel_management.py", line 168, in test_pm_name_input_query
+    PersonnelManagement(cls.driver).pm_name_input_query(uname)
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\personnel_management\personnel_management.py", line 60, in pm_name_input_query
+    self.pm_name_input(uname)
+AttributeError: 'WebDriver' object has no attribute 'find_element_by_css'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\personnel_management_test\test_personnel_management.py", line 177, in test_pm_name_input_query
+    cls.assertEqual(actual, expect)
+AssertionError: 'PM_failed' != 'WNCD004'
+- PM_failed
++ WNCD004
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft7.7' class='none'>
+    <td class='failCase'><div class='testcase'>test_pm_new_input_0__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft7.7')" >
+        fail</a>
+
+    <div id='div_ft7.7' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft7.7').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft7.7: Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\personnel_management_test\test_personnel_management.py", line 183, in test_pm_new_input
+    PersonnelManagement(cls.driver).pm_new_input(area, department, uname, number, position, gender, phone, email, qq)
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\personnel_management\personnel_management.py", line 65, in pm_new_input
+    Service.click_css(self.driver, 'button.btn-padding:nth-child(1)')
+AttributeError: 'WebDriver' object has no attribute 'find_element_by_css'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\personnel_management_test\test_personnel_management.py", line 197, in test_pm_new_input
+    cls.assertEqual(actual, expect)
+AssertionError: 'PM_failed' != 'PM_correct'
+- PM_failed
++ PM_correct
+
+Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\personnel_management_test\test_personnel_management.py", line 183, in test_pm_new_input
+    PersonnelManagement(cls.driver).pm_new_input(area, department, uname, number, position, gender, phone, email, qq)
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\personnel_management\personnel_management.py", line 65, in pm_new_input
+    Service.click_css(self.driver, 'button.btn-padding:nth-child(1)')
+AttributeError: 'WebDriver' object has no attribute 'find_element_by_css'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\personnel_management_test\test_personnel_management.py", line 197, in test_pm_new_input
+    cls.assertEqual(actual, expect)
+AssertionError: 'PM_failed' != 'PM_correct'
+- PM_failed
++ PM_correct
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt7.8' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_pm_recipients_0_0</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='ft7.9' class='none'>
+    <td class='failCase'><div class='testcase'>test_pm_state_0_0</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft7.9')" >
+        fail</a>
+
+    <div id='div_ft7.9' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft7.9').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft7.9: Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\personnel_management_test\test_personnel_management.py", line 102, in test_pm_state
+    test_pm_state = PersonnelManagement(cls.driver).pm_state()
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\personnel_management\personnel_management.py", line 27, in pm_state
+    Service.box_content_css(self.driver, 'select.emp_status:nth-child(3)')
+AttributeError: 'WebDriver' object has no attribute 'find_element_by_css'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\personnel_management_test\test_personnel_management.py", line 113, in test_pm_state
+    cls.assertEqual(actual, expect)
+AssertionError: 'PM_failed' != 'PM_correct'
+- PM_failed
++ PM_correct
+
+Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\personnel_management_test\test_personnel_management.py", line 102, in test_pm_state
+    test_pm_state = PersonnelManagement(cls.driver).pm_state()
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\personnel_management\personnel_management.py", line 27, in pm_state
+    Service.box_content_css(self.driver, 'select.emp_status:nth-child(3)')
+AttributeError: 'WebDriver' object has no attribute 'find_element_by_css'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\personnel_management_test\test_personnel_management.py", line 113, in test_pm_state
+    cls.assertEqual(actual, expect)
+AssertionError: 'PM_failed' != 'PM_correct'
+- PM_failed
++ PM_correct
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft7.10' class='none'>
+    <td class='failCase'><div class='testcase'>test_pm_state_query_0__</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft7.10')" >
+        fail</a>
+
+    <div id='div_ft7.10' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft7.10').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft7.10: Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\personnel_management_test\test_personnel_management.py", line 153, in test_pm_state_query
+    PersonnelManagement(cls.driver).pm_state_query(region, department, state)
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\personnel_management\personnel_management.py", line 54, in pm_state_query
+    Service.box_css_click(self.driver, 'select.sel-text:nth-child(2)', department)
+AttributeError: 'WebDriver' object has no attribute 'find_element_id_css'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\personnel_management_test\test_personnel_management.py", line 162, in test_pm_state_query
+    cls.assertEqual(actual, expect)
+AssertionError: 'PM_failed' != 'WNCD004'
+- PM_failed
++ WNCD004
+
+Traceback (most recent call last):
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\personnel_management_test\test_personnel_management.py", line 153, in test_pm_state_query
+    PersonnelManagement(cls.driver).pm_state_query(region, department, state)
+  File "D:\Python\phase two\woniuboss\lib\woniuboss_gui\personnel_management\personnel_management.py", line 54, in pm_state_query
+    Service.box_css_click(self.driver, 'select.sel-text:nth-child(2)', department)
+AttributeError: 'WebDriver' object has no attribute 'find_element_id_css'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python\Python37-32\Lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\Python\phase two\woniuboss\bin\woniuboss_gui\personnel_management_test\test_personnel_management.py", line 162, in test_pm_state_query
+    cls.assertEqual(actual, expect)
+AssertionError: 'PM_failed' != 'WNCD004'
+- PM_failed
++ WNCD004
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>woniuboss.bin.woniuboss_gui.administrative_management_test.test_administrative_management.AdministrativeManagementTest</td>
+    <td>3</td>
+    <td>3</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c8',3)">Detail</a></td>
+</tr>
+
+<tr id='pt8.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_am_management_0_0</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt8.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_am_recipients_0_0</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt8.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_am_return_0_0</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='total_row'>
+    <td>Total</td>
+    <td>59</td>
+    <td>17</td>
+    <td>28</td>
+    <td>14</td>
+    <td>&nbsp;</td>
+</tr>
+</table>
+
+<div id='ending'>&nbsp;</div>
+
+</body>
+</html>
